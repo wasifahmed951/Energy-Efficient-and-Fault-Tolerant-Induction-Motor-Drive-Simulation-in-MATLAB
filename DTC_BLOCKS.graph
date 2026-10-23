@@ -1,0 +1,1736 @@
+B	2	DTC_BLOCKS/Reference source	simulink/Sources/Constant	0	1	Value=1
+B	3	DTC_BLOCKS/Flux select	simulink/Sources/Constant	0	1	Value=flux_mode_default
+B	4	DTC_BLOCKS/LUT source	simulink/Sources/Constant	0	1	Value=1
+B	5	DTC_BLOCKS/Speed controller	simulink/Sources/Constant	0	1	Value=speed_mode_default
+B	6	DTC_BLOCKS/Speed ref (rpm)	simulink/Sources/Step	0	1	Time=0.2Before=0After=1000
+B	7	DTC_BLOCKS/rpm to rad_s	simulink/Math Operations/Gain	1	1	Gain=rpm2rad
+B	8	DTC_BLOCKS/Load torque (Nm)	simulink/Sources/Step	0	1	Time=0.6Before=0After=13
+B	9	DTC_BLOCKS/Extra inertia	simulink/Sources/Constant	0	1	Value=0
+B	10	DTC_BLOCKS/Speed-sensor fault	simulink/Sources/Constant	0	1	Value=0
+B	11	DTC_BLOCKS/Current-sensor fault	simulink/Sources/Constant	0	1	Value=0
+B	12	DTC_BLOCKS/Open-phase fault	simulink/Sources/Constant	0	1	Value=0
+B	13	DTC_BLOCKS/Fault onset	built-in/Subsystem	3	3	BackgroundColor=red
+B	14	DTC_BLOCKS/Fault onset/speed_on	built-in/Inport	0	1	Port=1
+B	15	DTC_BLOCKS/Fault onset/current_on	built-in/Inport	0	1	Port=2
+B	16	DTC_BLOCKS/Fault onset/open_on	built-in/Inport	0	1	Port=3
+B	17	DTC_BLOCKS/Fault onset/f_speed out	built-in/Outport	1	0	Port=1Position=400   30  430   44
+B	18	DTC_BLOCKS/Fault onset/f_cur out	built-in/Outport	1	0	Port=2Position=400   90  430  104
+B	19	DTC_BLOCKS/Fault onset/f_open out	built-in/Outport	1	0	Port=3Position=400  150  430  164
+B	20	DTC_BLOCKS/Fault onset/Fault time	simulink/Sources/Step	0	1	Time=t_faultBefore=0After=1
+B	21	DTC_BLOCKS/Fault onset/Active 1	simulink/Math Operations/Product	2	1	
+B	22	DTC_BLOCKS/Fault onset/Active 2	simulink/Math Operations/Product	2	1	
+B	23	DTC_BLOCKS/Fault onset/Active 3	simulink/Math Operations/Product	2	1	
+B	24	DTC_BLOCKS/Manual references	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	25	DTC_BLOCKS/Thesis test cycle	simulink/Sources/From Workspace	0	1	VariableName=scen_refInterpolate=offOutputAfterFinalValue=Holding final valueSampleTime=Ts
+B	26	DTC_BLOCKS/Reference select	simulink/Signal Routing/Multiport Switch	3	1	Inputs=2
+B	27	DTC_BLOCKS/References	simulink/Signal Routing/Demux	1	6	Outputs=6
+B	28	DTC_BLOCKS/Controller	built-in/Subsystem	8	13	BackgroundColor=green
+B	29	DTC_BLOCKS/Controller/ia_m	built-in/Inport	0	1	Port=1
+B	30	DTC_BLOCKS/Controller/ib_m	built-in/Inport	0	1	Port=2
+B	31	DTC_BLOCKS/Controller/ic_m	built-in/Inport	0	1	Port=3
+B	32	DTC_BLOCKS/Controller/w_m	built-in/Inport	0	1	Port=4
+B	33	DTC_BLOCKS/Controller/w_ref	built-in/Inport	0	1	Port=5
+B	34	DTC_BLOCKS/Controller/flux_sel	built-in/Inport	0	1	Port=6
+B	35	DTC_BLOCKS/Controller/lut_sel	built-in/Inport	0	1	Port=7
+B	36	DTC_BLOCKS/Controller/speed_mode	built-in/Inport	0	1	Port=8
+B	37	DTC_BLOCKS/Controller/da out	built-in/Outport	1	0	Port=1Position=1510    30  1540    44
+B	38	DTC_BLOCKS/Controller/db out	built-in/Outport	1	0	Port=2Position=1510    90  1540   104
+B	39	DTC_BLOCKS/Controller/dc out	built-in/Outport	1	0	Port=3Position=1510   150  1540   164
+B	40	DTC_BLOCKS/Controller/neutral out	built-in/Outport	1	0	Port=4Position=1510   210  1540   224
+B	41	DTC_BLOCKS/Controller/w_u out	built-in/Outport	1	0	Port=5Position=1510   270  1540   284
+B	42	DTC_BLOCKS/Controller/w_est out	built-in/Outport	1	0	Port=6Position=1510   330  1540   344
+B	43	DTC_BLOCKS/Controller/Te_ref out	built-in/Outport	1	0	Port=7Position=1510   390  1540   404
+B	44	DTC_BLOCKS/Controller/psi_ref out	built-in/Outport	1	0	Port=8Position=1510   450  1540   464
+B	45	DTC_BLOCKS/Controller/psi_est out	built-in/Outport	1	0	Port=9Position=1510   510  1540   524
+B	46	DTC_BLOCKS/Controller/Te_est out	built-in/Outport	1	0	Port=10Position=1510   570  1540   584
+B	47	DTC_BLOCKS/Controller/f_speed out	built-in/Outport	1	0	Port=11Position=1510   630  1540   644
+B	48	DTC_BLOCKS/Controller/f_cur out	built-in/Outport	1	0	Port=12Position=1510   690  1540   704
+B	49	DTC_BLOCKS/Controller/f_open out	built-in/Outport	1	0	Port=13Position=1510   750  1540   764
+B	50	DTC_BLOCKS/Controller/ia_m sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	51	DTC_BLOCKS/Controller/ib_m sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	52	DTC_BLOCKS/Controller/ic_m sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	53	DTC_BLOCKS/Controller/w_m sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	54	DTC_BLOCKS/Controller/w_ref sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	55	DTC_BLOCKS/Controller/Model inductances	built-in/Subsystem	1	6	BackgroundColor=cyan
+B	56	DTC_BLOCKS/Controller/Model inductances/psi_ref_p	built-in/Inport	0	1	Port=1
+B	57	DTC_BLOCKS/Controller/Model inductances/Lm_c out	built-in/Outport	1	0	Port=1Position=860   30  890   44
+B	58	DTC_BLOCKS/Controller/Model inductances/Ls_c out	built-in/Outport	1	0	Port=2Position=860   90  890  104
+B	59	DTC_BLOCKS/Controller/Model inductances/Lr_c out	built-in/Outport	1	0	Port=3Position=860  150  890  164
+B	60	DTC_BLOCKS/Controller/Model inductances/sLs_c out	built-in/Outport	1	0	Port=4Position=860  210  890  224
+B	61	DTC_BLOCKS/Controller/Model inductances/tr_c out	built-in/Outport	1	0	Port=5Position=860  270  890  284
+B	62	DTC_BLOCKS/Controller/Model inductances/D_c out	built-in/Outport	1	0	Port=6Position=860  330  890  344
+B	63	DTC_BLOCKS/Controller/Model inductances/Lm_c	simulink/User-Defined Functions/Fcn	1	1	Expr=Lm_rated+ctrl_sat*(Lm0/(1+sat_a*((((u)>(0.05))*(u)+((u)<=(0.05))*(0.05))/psi_k)^sat_b)-Lm_rated)
+B	64	DTC_BLOCKS/Controller/Model inductances/Ls_c	simulink/User-Defined Functions/Fcn	1	1	Expr=Lls+u
+B	65	DTC_BLOCKS/Controller/Model inductances/Lr_c	simulink/User-Defined Functions/Fcn	1	1	Expr=Llr+u
+B	66	DTC_BLOCKS/Controller/Model inductances/sLs_c	simulink/User-Defined Functions/Fcn	1	1	Expr=u(2)-u(1)*u(1)/u(3)
+B	67	DTC_BLOCKS/Controller/Model inductances/sLs_c in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	68	DTC_BLOCKS/Controller/Model inductances/tr_c	simulink/User-Defined Functions/Fcn	1	1	Expr=u/Rr
+B	69	DTC_BLOCKS/Controller/Model inductances/D_c	simulink/User-Defined Functions/Fcn	1	1	Expr=u(2)*u(3)-u(1)*u(1)
+B	70	DTC_BLOCKS/Controller/Model inductances/D_c in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	71	DTC_BLOCKS/Controller/Current reconstruction	built-in/Subsystem	10	5	BackgroundColor=cyan
+B	72	DTC_BLOCKS/Controller/Current reconstruction/ia_m	built-in/Inport	0	1	Port=1
+B	73	DTC_BLOCKS/Controller/Current reconstruction/ib_m	built-in/Inport	0	1	Port=2
+B	74	DTC_BLOCKS/Controller/Current reconstruction/ic_m	built-in/Inport	0	1	Port=3
+B	75	DTC_BLOCKS/Controller/Current reconstruction/f_cur_p	built-in/Inport	0	1	Port=4
+B	76	DTC_BLOCKS/Controller/Current reconstruction/neutral_p	built-in/Inport	0	1	Port=5
+B	77	DTC_BLOCKS/Controller/Current reconstruction/obs1_p	built-in/Inport	0	1	Port=6
+B	78	DTC_BLOCKS/Controller/Current reconstruction/obs3_p	built-in/Inport	0	1	Port=7
+B	79	DTC_BLOCKS/Controller/Current reconstruction/Lm_c	built-in/Inport	0	1	Port=8
+B	80	DTC_BLOCKS/Controller/Current reconstruction/Lr_c	built-in/Inport	0	1	Port=9
+B	81	DTC_BLOCKS/Controller/Current reconstruction/D_c	built-in/Inport	0	1	Port=10
+B	82	DTC_BLOCKS/Controller/Current reconstruction/i_alpha out	built-in/Outport	1	0	Port=1Position=860   30  890   44
+B	83	DTC_BLOCKS/Controller/Current reconstruction/i_beta out	built-in/Outport	1	0	Port=2Position=860   90  890  104
+B	84	DTC_BLOCKS/Controller/Current reconstruction/ia_hat out	built-in/Outport	1	0	Port=3Position=860  150  890  164
+B	85	DTC_BLOCKS/Controller/Current reconstruction/i_alpha_p out	built-in/Outport	1	0	Port=4Position=860  210  890  224
+B	86	DTC_BLOCKS/Controller/Current reconstruction/i_beta_p out	built-in/Outport	1	0	Port=5Position=860  270  890  284
+B	87	DTC_BLOCKS/Controller/Current reconstruction/i_alpha(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  170  750  200
+B	88	DTC_BLOCKS/Controller/Current reconstruction/i_beta(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  240  750  270
+B	89	DTC_BLOCKS/Controller/Current reconstruction/ia_hat	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)*u(3)-u(2)*u(4))/u(5)
+B	90	DTC_BLOCKS/Controller/Current reconstruction/ia_hat in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	91	DTC_BLOCKS/Controller/Current reconstruction/ia_u	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>0.5)*(u(2))+(1-(u(1)>0.5))*(u(3)))
+B	92	DTC_BLOCKS/Controller/Current reconstruction/ia_u in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	93	DTC_BLOCKS/Controller/Current reconstruction/i_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>0.5)*(-(u(2)+u(3))/3)+(1-(u(1)>0.5))*(u(4)))
+B	94	DTC_BLOCKS/Controller/Current reconstruction/i_alpha in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	95	DTC_BLOCKS/Controller/Current reconstruction/i_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>0.5)*((u(2)-u(3))/sqrt(3))+(1-(u(1)>0.5))*((u(4)+2*u(2))/sqrt(3)))
+B	96	DTC_BLOCKS/Controller/Current reconstruction/i_beta in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	97	DTC_BLOCKS/Controller/Fault detection and isolation	built-in/Subsystem	8	10	BackgroundColor=red
+B	98	DTC_BLOCKS/Controller/Fault detection and isolation/w_m	built-in/Inport	0	1	Port=1
+B	99	DTC_BLOCKS/Controller/Fault detection and isolation/ia_m	built-in/Inport	0	1	Port=2
+B	100	DTC_BLOCKS/Controller/Fault detection and isolation/ib_m	built-in/Inport	0	1	Port=3
+B	101	DTC_BLOCKS/Controller/Fault detection and isolation/ic_m	built-in/Inport	0	1	Port=4
+B	102	DTC_BLOCKS/Controller/Fault detection and isolation/w_ref	built-in/Inport	0	1	Port=5
+B	103	DTC_BLOCKS/Controller/Fault detection and isolation/w_est	built-in/Inport	0	1	Port=6
+B	104	DTC_BLOCKS/Controller/Fault detection and isolation/mras_ok	built-in/Inport	0	1	Port=7
+B	105	DTC_BLOCKS/Controller/Fault detection and isolation/ia_hat	built-in/Inport	0	1	Port=8
+B	106	DTC_BLOCKS/Controller/Fault detection and isolation/f_speed out	built-in/Outport	1	0	Port=1Position=2100    30  2130    44
+B	107	DTC_BLOCKS/Controller/Fault detection and isolation/f_cur out	built-in/Outport	1	0	Port=2Position=2100    90  2130   104
+B	108	DTC_BLOCKS/Controller/Fault detection and isolation/f_open out	built-in/Outport	1	0	Port=3Position=2100   150  2130   164
+B	109	DTC_BLOCKS/Controller/Fault detection and isolation/neutral out	built-in/Outport	1	0	Port=4Position=2100   210  2130   224
+B	110	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim out	built-in/Outport	1	0	Port=5Position=2100   270  2130   284
+B	111	DTC_BLOCKS/Controller/Fault detection and isolation/w_u out	built-in/Outport	1	0	Port=6Position=2100   330  2130   344
+B	112	DTC_BLOCKS/Controller/Fault detection and isolation/f_speed_p out	built-in/Outport	1	0	Port=7Position=2100   390  2130   404
+B	113	DTC_BLOCKS/Controller/Fault detection and isolation/f_cur_p out	built-in/Outport	1	0	Port=8Position=2100   450  2130   464
+B	114	DTC_BLOCKS/Controller/Fault detection and isolation/neutral_p out	built-in/Outport	1	0	Port=9Position=2100   510  2130   524
+B	115	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim_p out	built-in/Outport	1	0	Port=10Position=2100   570  2130   584
+B	116	DTC_BLOCKS/Controller/Fault detection and isolation/k(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690   30  750   60
+B	117	DTC_BLOCKS/Controller/Fault detection and isolation/hw1(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1930    30  1990    60
+B	118	DTC_BLOCKS/Controller/Fault detection and isolation/hw2(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1930   100  1990   130
+B	119	DTC_BLOCKS/Controller/Fault detection and isolation/hw3(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1930   170  1990   200
+B	120	DTC_BLOCKS/Controller/Fault detection and isolation/hi1(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1930   240  1990   270
+B	121	DTC_BLOCKS/Controller/Fault detection and isolation/hi2(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1930   310  1990   340
+B	122	DTC_BLOCKS/Controller/Fault detection and isolation/hi3(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1930   380  1990   410
+B	123	DTC_BLOCKS/Controller/Fault detection and isolation/cnt_w(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  380  750  410
+B	124	DTC_BLOCKS/Controller/Fault detection and isolation/f_speed(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  520  750  550
+B	125	DTC_BLOCKS/Controller/Fault detection and isolation/cnt_i(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  870  750  900
+B	126	DTC_BLOCKS/Controller/Fault detection and isolation/anom_t(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   100  1370   130
+B	127	DTC_BLOCKS/Controller/Fault detection and isolation/sum_kcl(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   170  1370   200
+B	128	DTC_BLOCKS/Controller/Fault detection and isolation/sum_exp(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   240  1370   270
+B	129	DTC_BLOCKS/Controller/Fault detection and isolation/anom(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   660  1370   690
+B	130	DTC_BLOCKS/Controller/Fault detection and isolation/f_open(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   730  1370   760
+B	131	DTC_BLOCKS/Controller/Fault detection and isolation/f_cur(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   800  1370   830
+B	132	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=Te_maxPosition=1310   940  1370   970
+B	133	DTC_BLOCKS/Controller/Fault detection and isolation/neutral(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310  1010  1370  1040
+B	134	DTC_BLOCKS/Controller/Fault detection and isolation/k	simulink/User-Defined Functions/Fcn	1	1	Expr=u+1
+B	135	DTC_BLOCKS/Controller/Fault detection and isolation/enable	simulink/User-Defined Functions/Fcn	1	1	Expr=(fd_on>0.5)*(u*Ts>0.05)
+B	136	DTC_BLOCKS/Controller/Fault detection and isolation/d3w	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-3*u(2)+3*u(3)-u(4)
+B	137	DTC_BLOCKS/Controller/Fault detection and isolation/d3w in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	138	DTC_BLOCKS/Controller/Fault detection and isolation/res_w	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u(1)-u(2))
+B	139	DTC_BLOCKS/Controller/Fault detection and isolation/res_w in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	140	DTC_BLOCKS/Controller/Fault detection and isolation/w_ok	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<0.5)*(u(2)<0.5)*(u(3)<0.5)*(abs(u(4))>wmin)
+B	141	DTC_BLOCKS/Controller/Fault detection and isolation/w_ok in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	142	DTC_BLOCKS/Controller/Fault detection and isolation/cnt_w	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*(((u(2)*u(3)*(u(4)>res_w_thr))*(u(5)+1)+(1-(u(2)*u(3)*(u(4)>res_w_thr)))*(0)))+(1-(u(1)))*(u(5)))
+B	143	DTC_BLOCKS/Controller/Fault detection and isolation/cnt_w in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	144	DTC_BLOCKS/Controller/Fault detection and isolation/speed_fault_found	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)<0.5)*u(3)*(((abs(u(4))>tdo_w_thr)+(u(5)>=res_N))>0)*(u(6)>res_w_thr)
+B	145	DTC_BLOCKS/Controller/Fault detection and isolation/speed_fault_found in	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	146	DTC_BLOCKS/Controller/Fault detection and isolation/f_speed	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+u(2)
+B	147	DTC_BLOCKS/Controller/Fault detection and isolation/f_speed in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	148	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim after speed test	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*((((u(2))<(Te_max*derate_sensor))*(u(2))+((u(2))>=(Te_max*derate_sensor))*(Te_max*derate_sensor)))+(1-(u(1)))*(u(2)))
+B	149	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim after speed test in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	150	DTC_BLOCKS/Controller/Fault detection and isolation/test_active	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)<0.5)*(u(3)<0.5)*(((u(4)<0.5)+u(5))>0)
+B	151	DTC_BLOCKS/Controller/Fault detection and isolation/test_active in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	152	DTC_BLOCKS/Controller/Fault detection and isolation/d3i	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-3*u(2)+3*u(3)-u(4)
+B	153	DTC_BLOCKS/Controller/Fault detection and isolation/d3i in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	154	DTC_BLOCKS/Controller/Fault detection and isolation/res_i	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u(1)-u(2))
+B	155	DTC_BLOCKS/Controller/Fault detection and isolation/res_i in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	156	DTC_BLOCKS/Controller/Fault detection and isolation/cnt_i	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*(((u(2)>res_i_thr)*(u(3)+1)+(1-(u(2)>res_i_thr))*(0)))+(1-(u(1)))*(u(3)))
+B	157	DTC_BLOCKS/Controller/Fault detection and isolation/cnt_i in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	158	DTC_BLOCKS/Controller/Fault detection and isolation/anomaly_found	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)<0.5)*(((abs(u(3))>tdo_i_thr)+(u(4)>=res_N))>0)
+B	159	DTC_BLOCKS/Controller/Fault detection and isolation/anomaly_found in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	160	DTC_BLOCKS/Controller/Fault detection and isolation/anomaly_open	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+u(2)
+B	161	DTC_BLOCKS/Controller/Fault detection and isolation/anomaly_open in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	162	DTC_BLOCKS/Controller/Fault detection and isolation/classify_running	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)>0.5)
+B	163	DTC_BLOCKS/Controller/Fault detection and isolation/classify_running in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	164	DTC_BLOCKS/Controller/Fault detection and isolation/anom_t	simulink/User-Defined Functions/Fcn	1	1	Expr=(1-u(1))*u(2)+u(3)*Ts
+B	165	DTC_BLOCKS/Controller/Fault detection and isolation/anom_t in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	166	DTC_BLOCKS/Controller/Fault detection and isolation/sum_kcl	simulink/User-Defined Functions/Fcn	1	1	Expr=(1-u(1))*u(2)+u(3)*abs(u(4)+u(5))
+B	167	DTC_BLOCKS/Controller/Fault detection and isolation/sum_kcl in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	168	DTC_BLOCKS/Controller/Fault detection and isolation/sum_exp	simulink/User-Defined Functions/Fcn	1	1	Expr=(1-u(1))*u(2)+u(3)*u(4)
+B	169	DTC_BLOCKS/Controller/Fault detection and isolation/sum_exp in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	170	DTC_BLOCKS/Controller/Fault detection and isolation/decide	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)>=open_N_time)
+B	171	DTC_BLOCKS/Controller/Fault detection and isolation/decide in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	172	DTC_BLOCKS/Controller/Fault detection and isolation/n_samples	simulink/User-Defined Functions/Fcn	1	1	Expr=floor(u/Ts+0.5)
+B	173	DTC_BLOCKS/Controller/Fault detection and isolation/false_alarm	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)/(u(3)+(u(3)<0.5))<res_i_thr)
+B	174	DTC_BLOCKS/Controller/Fault detection and isolation/false_alarm in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	175	DTC_BLOCKS/Controller/Fault detection and isolation/is_open_phase	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(1-u(2))*(u(3)<0.2*u(4))
+B	176	DTC_BLOCKS/Controller/Fault detection and isolation/is_open_phase in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	177	DTC_BLOCKS/Controller/Fault detection and isolation/is_current_sensor	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(1-u(2))*(1-u(3))
+B	178	DTC_BLOCKS/Controller/Fault detection and isolation/is_current_sensor in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	179	DTC_BLOCKS/Controller/Fault detection and isolation/anom	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(1-u(2))
+B	180	DTC_BLOCKS/Controller/Fault detection and isolation/anom in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	181	DTC_BLOCKS/Controller/Fault detection and isolation/f_open	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+u(2)
+B	182	DTC_BLOCKS/Controller/Fault detection and isolation/f_open in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	183	DTC_BLOCKS/Controller/Fault detection and isolation/f_cur	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+u(2)
+B	184	DTC_BLOCKS/Controller/Fault detection and isolation/f_cur in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	185	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim after open test	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*((((u(2))<(Te_max*derate_open))*(u(2))+((u(2))>=(Te_max*derate_open))*(Te_max*derate_open)))+(1-(u(1)))*(u(2)))
+B	186	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim after open test in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	187	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*((((u(2))<(Te_max*derate_sensor))*(u(2))+((u(2))>=(Te_max*derate_sensor))*(Te_max*derate_sensor)))+(1-(u(1)))*(u(2)))
+B	188	DTC_BLOCKS/Controller/Fault detection and isolation/Te_lim in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	189	DTC_BLOCKS/Controller/Fault detection and isolation/neutral	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+(1-u(1))*u(2)*(drive_type<1.5)*(remedy_open>0.5)
+B	190	DTC_BLOCKS/Controller/Fault detection and isolation/neutral in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	191	DTC_BLOCKS/Controller/Fault detection and isolation/hw1	simulink/User-Defined Functions/Fcn	1	1	Expr=u
+B	192	DTC_BLOCKS/Controller/Fault detection and isolation/hw2	simulink/User-Defined Functions/Fcn	1	1	Expr=u
+B	193	DTC_BLOCKS/Controller/Fault detection and isolation/hw3	simulink/User-Defined Functions/Fcn	1	1	Expr=u
+B	194	DTC_BLOCKS/Controller/Fault detection and isolation/hi1	simulink/User-Defined Functions/Fcn	1	1	Expr=u
+B	195	DTC_BLOCKS/Controller/Fault detection and isolation/hi2	simulink/User-Defined Functions/Fcn	1	1	Expr=u
+B	196	DTC_BLOCKS/Controller/Fault detection and isolation/hi3	simulink/User-Defined Functions/Fcn	1	1	Expr=u
+B	197	DTC_BLOCKS/Controller/Fault detection and isolation/w_u	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>0.5)*(u(2))+(1-(u(1)>0.5))*(u(3)))
+B	198	DTC_BLOCKS/Controller/Fault detection and isolation/w_u in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	199	DTC_BLOCKS/Controller/MRAS speed estimator	built-in/Subsystem	17	2	BackgroundColor=red
+B	200	DTC_BLOCKS/Controller/MRAS speed estimator/i_alpha	built-in/Inport	0	1	Port=1
+B	201	DTC_BLOCKS/Controller/MRAS speed estimator/i_beta	built-in/Inport	0	1	Port=2
+B	202	DTC_BLOCKS/Controller/MRAS speed estimator/i_alpha_p	built-in/Inport	0	1	Port=3
+B	203	DTC_BLOCKS/Controller/MRAS speed estimator/i_beta_p	built-in/Inport	0	1	Port=4
+B	204	DTC_BLOCKS/Controller/MRAS speed estimator/va_app_p	built-in/Inport	0	1	Port=5
+B	205	DTC_BLOCKS/Controller/MRAS speed estimator/vb_app_p	built-in/Inport	0	1	Port=6
+B	206	DTC_BLOCKS/Controller/MRAS speed estimator/Lm_c	built-in/Inport	0	1	Port=7
+B	207	DTC_BLOCKS/Controller/MRAS speed estimator/Lr_c	built-in/Inport	0	1	Port=8
+B	208	DTC_BLOCKS/Controller/MRAS speed estimator/sLs_c	built-in/Inport	0	1	Port=9
+B	209	DTC_BLOCKS/Controller/MRAS speed estimator/tr_c	built-in/Inport	0	1	Port=10
+B	210	DTC_BLOCKS/Controller/MRAS speed estimator/w_ref	built-in/Inport	0	1	Port=11
+B	211	DTC_BLOCKS/Controller/MRAS speed estimator/w_m	built-in/Inport	0	1	Port=12
+B	212	DTC_BLOCKS/Controller/MRAS speed estimator/f_speed_p	built-in/Inport	0	1	Port=13
+B	213	DTC_BLOCKS/Controller/MRAS speed estimator/trans_t_p	built-in/Inport	0	1	Port=14
+B	214	DTC_BLOCKS/Controller/MRAS speed estimator/dpsi_p	built-in/Inport	0	1	Port=15
+B	215	DTC_BLOCKS/Controller/MRAS speed estimator/Te_ref_p	built-in/Inport	0	1	Port=16
+B	216	DTC_BLOCKS/Controller/MRAS speed estimator/Te_lim_p	built-in/Inport	0	1	Port=17
+B	217	DTC_BLOCKS/Controller/MRAS speed estimator/w_est out	built-in/Outport	1	0	Port=1Position=1480    30  1510    44
+B	218	DTC_BLOCKS/Controller/MRAS speed estimator/mras_ok out	built-in/Outport	1	0	Port=2Position=1480    90  1510   104
+B	219	DTC_BLOCKS/Controller/MRAS speed estimator/psv_alpha(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690   30  750   60
+B	220	DTC_BLOCKS/Controller/MRAS speed estimator/psv_beta(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  100  750  130
+B	221	DTC_BLOCKS/Controller/MRAS speed estimator/pri_alpha(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  310  750  340
+B	222	DTC_BLOCKS/Controller/MRAS speed estimator/pri_beta(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  380  750  410
+B	223	DTC_BLOCKS/Controller/MRAS speed estimator/lpf_alpha(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  450  750  480
+B	224	DTC_BLOCKS/Controller/MRAS speed estimator/lpf_beta(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  520  750  550
+B	225	DTC_BLOCKS/Controller/MRAS speed estimator/mr_int(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  800  750  830
+B	226	DTC_BLOCKS/Controller/MRAS speed estimator/w_est(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  870  750  900
+B	227	DTC_BLOCKS/Controller/MRAS speed estimator/mras_t(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  940  750  970
+B	228	DTC_BLOCKS/Controller/MRAS speed estimator/psv_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(u(2)-Rs*0.5*(u(3)+u(4))-mras_wc*u(1))
+B	229	DTC_BLOCKS/Controller/MRAS speed estimator/psv_alpha in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	230	DTC_BLOCKS/Controller/MRAS speed estimator/psv_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(u(2)-Rs*0.5*(u(3)+u(4))-mras_wc*u(1))
+B	231	DTC_BLOCKS/Controller/MRAS speed estimator/psv_beta in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	232	DTC_BLOCKS/Controller/MRAS speed estimator/psr_v_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/u(2))*(u(3)-u(4)*u(5))
+B	233	DTC_BLOCKS/Controller/MRAS speed estimator/psr_v_alpha in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	234	DTC_BLOCKS/Controller/MRAS speed estimator/psr_v_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/u(2))*(u(3)-u(4)*u(5))
+B	235	DTC_BLOCKS/Controller/MRAS speed estimator/psr_v_beta in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	236	DTC_BLOCKS/Controller/MRAS speed estimator/pri_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*((u(4)/u(5))*u(6)-u(1)/u(5)-pp*u(3)*u(2))
+B	237	DTC_BLOCKS/Controller/MRAS speed estimator/pri_alpha in	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	238	DTC_BLOCKS/Controller/MRAS speed estimator/pri_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=u(2)+Ts*((u(4)/u(5))*u(6)-u(2)/u(5)+pp*u(3)*u(1))
+B	239	DTC_BLOCKS/Controller/MRAS speed estimator/pri_beta in	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	240	DTC_BLOCKS/Controller/MRAS speed estimator/lpf_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*mras_wc*(u(2)-u(1))
+B	241	DTC_BLOCKS/Controller/MRAS speed estimator/lpf_alpha in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	242	DTC_BLOCKS/Controller/MRAS speed estimator/lpf_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*mras_wc*(u(2)-u(1))
+B	243	DTC_BLOCKS/Controller/MRAS speed estimator/lpf_beta in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	244	DTC_BLOCKS/Controller/MRAS speed estimator/eps	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(2)*(u(3)-u(5))-u(1)*(u(4)-u(6)))/(sqrt(u(1)*u(1)+u(2)*u(2))*sqrt((u(3)-u(5))*(u(3)-u(5))+(u(4)-u(6))*(u(4)-u(6)))+1e-3)
+B	245	DTC_BLOCKS/Controller/MRAS speed estimator/eps in	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	246	DTC_BLOCKS/Controller/MRAS speed estimator/low_speed	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u)<wmin
+B	247	DTC_BLOCKS/Controller/MRAS speed estimator/w_sync	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>0.5)*(u(2))+(1-(u(1)>0.5))*(u(3)))
+B	248	DTC_BLOCKS/Controller/MRAS speed estimator/w_sync in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	249	DTC_BLOCKS/Controller/MRAS speed estimator/mr_int	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*(pp*u(2))+(1-(u(1)))*(u(3)+Ts*mras_Ki*u(4)))
+B	250	DTC_BLOCKS/Controller/MRAS speed estimator/mr_int in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	251	DTC_BLOCKS/Controller/MRAS speed estimator/w_est	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1))*(u(2))+(1-(u(1)))*((mras_Kp*u(3)+u(4))/pp))
+B	252	DTC_BLOCKS/Controller/MRAS speed estimator/w_est in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	253	DTC_BLOCKS/Controller/MRAS speed estimator/mras_t	simulink/User-Defined Functions/Fcn	1	1	Expr=(1-u(1))*(1-(((u(2)>0)+(abs(u(3))>0.01))>0))*(u(4)+Ts)
+B	254	DTC_BLOCKS/Controller/MRAS speed estimator/mras_t in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	255	DTC_BLOCKS/Controller/MRAS speed estimator/mras_ok	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)>=0.5)*(abs(u(2))<0.98*u(3))
+B	256	DTC_BLOCKS/Controller/MRAS speed estimator/mras_ok in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	257	DTC_BLOCKS/Controller/Speed controller	built-in/Subsystem	4	3	BackgroundColor=green
+B	258	DTC_BLOCKS/Controller/Speed controller/w_ref	built-in/Inport	0	1	Port=1
+B	259	DTC_BLOCKS/Controller/Speed controller/w_u	built-in/Inport	0	1	Port=2
+B	260	DTC_BLOCKS/Controller/Speed controller/Te_lim	built-in/Inport	0	1	Port=3
+B	261	DTC_BLOCKS/Controller/Speed controller/mode	built-in/Inport	0	1	Port=4
+B	262	DTC_BLOCKS/Controller/Speed controller/Te_ref out	built-in/Outport	1	0	Port=1Position=860   30  890   44
+B	263	DTC_BLOCKS/Controller/Speed controller/e_w out	built-in/Outport	1	0	Port=2Position=860   90  890  104
+B	264	DTC_BLOCKS/Controller/Speed controller/Te_ref_p out	built-in/Outport	1	0	Port=3Position=860  150  890  164
+B	265	DTC_BLOCKS/Controller/Speed controller/relay(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=1Position=690  100  750  130
+B	266	DTC_BLOCKS/Controller/Speed controller/Te_ref(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  310  750  340
+B	267	DTC_BLOCKS/Controller/Speed controller/int_w(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  380  750  410
+B	268	DTC_BLOCKS/Controller/Speed controller/e_w	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-u(2)
+B	269	DTC_BLOCKS/Controller/Speed controller/e_w in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	270	DTC_BLOCKS/Controller/Speed controller/relay	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>1.5)*(((u(2)>relay_h)*(1)+(1-(u(2)>relay_h))*(((u(2)<-relay_h)*(-1)+(1-(u(2)<-relay_h))*(u(3))))))+(1-(u(1)>1.5))*(u(3)))
+B	271	DTC_BLOCKS/Controller/Speed controller/relay in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	272	DTC_BLOCKS/Controller/Speed controller/Te_u	simulink/User-Defined Functions/Fcn	1	1	Expr=Kp_w*u(1)+u(2)
+B	273	DTC_BLOCKS/Controller/Speed controller/Te_u in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	274	DTC_BLOCKS/Controller/Speed controller/Te_pi	simulink/User-Defined Functions/Fcn	1	1	Expr=((((((u(1))>(-u(2)))*(u(1))+((u(1))<=(-u(2)))*(-u(2))))<(u(2)))*((((u(1))>(-u(2)))*(u(1))+((u(1))<=(-u(2)))*(-u(2))))+(((((u(1))>(-u(2)))*(u(1))+((u(1))<=(-u(2)))*(-u(2))))>=(u(2)))*(u(2)))
+B	275	DTC_BLOCKS/Controller/Speed controller/Te_pi in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	276	DTC_BLOCKS/Controller/Speed controller/Te_ref	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>1.5)*(relay_bias+u(2)*relay_T)+(1-(u(1)>1.5))*(u(3)))
+B	277	DTC_BLOCKS/Controller/Speed controller/Te_ref in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	278	DTC_BLOCKS/Controller/Speed controller/int_w	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>1.5)*(u(2))+(1-(u(1)>1.5))*(((((abs(u(3))<=u(4))+(abs(((u(5)>0)-(u(5)<0))-((u(3)>0)-(u(3)<0)))>0.5))>0)*(((((((u(2)+Ts*Ki_w*u(5))>(-u(4)))*(u(2)+Ts*Ki_w*u(5))+((u(2)+Ts*Ki_w*u(5))<=(-u(4)))*(-u(4))))<(u(4)))*((((u(2)+Ts*Ki_w*u(5))>(-u(4)))*(u(2)+Ts*Ki_w*u(5))+((u(2)+Ts*Ki_w*u(5))<=(-u(4)))*(-u(4))))+(((((u(2)+Ts*Ki_w*u(5))>(-u(4)))*(u(2)+Ts*Ki_w*u(5))+((u(2)+Ts*Ki_w*u(5))<=(-u(4)))*(-u(4))))>=(u(4)))*(u(4))))+(1-(((abs(u(3))<=u(4))+(abs(((u(5)>0)-(u(5)<0))-((u(3)>0)-(u(3)<0)))>0.5))>0))*(u(2)))))
+B	279	DTC_BLOCKS/Controller/Speed controller/int_w in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	280	DTC_BLOCKS/Controller/Flux reference	built-in/Subsystem	5	5	BackgroundColor=yellow
+B	281	DTC_BLOCKS/Controller/Flux reference/e_w	built-in/Inport	0	1	Port=1
+B	282	DTC_BLOCKS/Controller/Flux reference/Te_ref	built-in/Inport	0	1	Port=2
+B	283	DTC_BLOCKS/Controller/Flux reference/w_u	built-in/Inport	0	1	Port=3
+B	284	DTC_BLOCKS/Controller/Flux reference/flux_sel	built-in/Inport	0	1	Port=4
+B	285	DTC_BLOCKS/Controller/Flux reference/lut_sel	built-in/Inport	0	1	Port=5
+B	286	DTC_BLOCKS/Controller/Flux reference/psi_ref out	built-in/Outport	1	0	Port=1Position=860   30  890   44
+B	287	DTC_BLOCKS/Controller/Flux reference/dpsi_rate out	built-in/Outport	1	0	Port=2Position=860   90  890  104
+B	288	DTC_BLOCKS/Controller/Flux reference/psi_ref_p out	built-in/Outport	1	0	Port=3Position=860  150  890  164
+B	289	DTC_BLOCKS/Controller/Flux reference/trans_t_p out	built-in/Outport	1	0	Port=4Position=860  210  890  224
+B	290	DTC_BLOCKS/Controller/Flux reference/dpsi_rate_p out	built-in/Outport	1	0	Port=5Position=860  270  890  284
+B	291	DTC_BLOCKS/Controller/Flux reference/trans_t(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690   30  750   60
+B	292	DTC_BLOCKS/Controller/Flux reference/Te_ref_f(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  100  750  130
+B	293	DTC_BLOCKS/Controller/Flux reference/psi_ref(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  730  750  760
+B	294	DTC_BLOCKS/Controller/Flux reference/dpsi_rate(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  800  750  830
+B	295	DTC_BLOCKS/Controller/Flux reference/trans_t	simulink/User-Defined Functions/Fcn	1	1	Expr=(((((((abs(u(1))>trans_dw)+(abs(u(2)-u(3))>trans_dT))>0)*(trans_hold)+(1-(((abs(u(1))>trans_dw)+(abs(u(2)-u(3))>trans_dT))>0))*(u(4)))-Ts)>(0))*(((((abs(u(1))>trans_dw)+(abs(u(2)-u(3))>trans_dT))>0)*(trans_hold)+(1-(((abs(u(1))>trans_dw)+(abs(u(2)-u(3))>trans_dT))>0))*(u(4)))-Ts)+((((((abs(u(1))>trans_dw)+(abs(u(2)-u(3))>trans_dT))>0)*(trans_hold)+(1-(((abs(u(1))>trans_dw)+(abs(u(2)-u(3))>trans_dT))>0))*(u(4)))-Ts)<=(0))*(0))
+B	296	DTC_BLOCKS/Controller/Flux reference/trans_t in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	297	DTC_BLOCKS/Controller/Flux reference/Te_ref_f	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts/0.05*(u(2)-u(1))
+B	298	DTC_BLOCKS/Controller/Flux reference/Te_ref_f in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	299	DTC_BLOCKS/Controller/Flux reference/abs w_u	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u)
+B	300	DTC_BLOCKS/Controller/Flux reference/abs Te_ref_f	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u)
+B	301	DTC_BLOCKS/Controller/Flux reference/LUT analytic	simulink/Lookup Tables/2-D Lookup Table	2	1	Table=lut_anBreakpointsForDimension1=lut_wBreakpointsForDimension2=lut_TExtrapMethod=Clip
+B	302	DTC_BLOCKS/Controller/Flux reference/LUT ML	simulink/Lookup Tables/2-D Lookup Table	2	1	Table=lut_mlBreakpointsForDimension1=lut_wBreakpointsForDimension2=lut_TExtrapMethod=Clip
+B	303	DTC_BLOCKS/Controller/Flux reference/LUT select	simulink/Signal Routing/Multiport Switch	3	1	Inputs=2
+B	304	DTC_BLOCKS/Controller/Flux reference/MLP network	built-in/Subsystem	2	1	BackgroundColor=yellow
+B	305	DTC_BLOCKS/Controller/Flux reference/MLP network/w	built-in/Inport	0	1	Port=1
+B	306	DTC_BLOCKS/Controller/Flux reference/MLP network/T	built-in/Inport	0	1	Port=2
+B	307	DTC_BLOCKS/Controller/Flux reference/MLP network/psi out	built-in/Outport	1	0	Port=1Position=1000    30  1030    44
+B	308	DTC_BLOCKS/Controller/Flux reference/MLP network/Input mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	309	DTC_BLOCKS/Controller/Flux reference/MLP network/x_mu	simulink/Sources/Constant	0	1	Value=mlp_x_mu
+B	310	DTC_BLOCKS/Controller/Flux reference/MLP network/Centre	simulink/Math Operations/Sum	2	1	Inputs=+-IconShape=rectangular
+B	311	DTC_BLOCKS/Controller/Flux reference/MLP network/Normalise	simulink/Math Operations/Gain	1	1	Gain=1./mlp_x_sd
+B	312	DTC_BLOCKS/Controller/Flux reference/MLP network/W1	simulink/Math Operations/Gain	1	1	Gain=mlp_W1Multiplication=Matrix(K*u)
+B	313	DTC_BLOCKS/Controller/Flux reference/MLP network/b1	simulink/Sources/Constant	0	1	Value=mlp_b1
+B	314	DTC_BLOCKS/Controller/Flux reference/MLP network/Hidden sum	simulink/Math Operations/Sum	2	1	Inputs=++IconShape=rectangular
+B	315	DTC_BLOCKS/Controller/Flux reference/MLP network/tanh	simulink/Math Operations/Trigonometric Function	1	1	Operator=tanh
+B	316	DTC_BLOCKS/Controller/Flux reference/MLP network/W2	simulink/Math Operations/Gain	1	1	Gain=mlp_W2Multiplication=Matrix(K*u)
+B	317	DTC_BLOCKS/Controller/Flux reference/MLP network/b2	simulink/Sources/Constant	0	1	Value=mlp_b2
+B	318	DTC_BLOCKS/Controller/Flux reference/MLP network/Output sum	simulink/Math Operations/Sum	2	1	Inputs=++IconShape=rectangular
+B	319	DTC_BLOCKS/Controller/Flux reference/MLP network/y_sd	simulink/Math Operations/Gain	1	1	Gain=mlp_y_sd
+B	320	DTC_BLOCKS/Controller/Flux reference/MLP network/y_mu	simulink/Sources/Constant	0	1	Value=mlp_y_mu
+B	321	DTC_BLOCKS/Controller/Flux reference/MLP network/De-normalise	simulink/Math Operations/Sum	2	1	Inputs=++IconShape=rectangular
+B	322	DTC_BLOCKS/Controller/Flux reference/psi_target	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>0)*(psi_r_rated)+(1-(u(1)>0))*(((((((((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))>(psi_min))*(((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))+((((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))<=(psi_min))*(psi_min)))<(psi_r_rated))*((((((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))>(psi_min))*(((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))+((((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))<=(psi_min))*(psi_min)))+(((((((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))>(psi_min))*(((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))+((((u(2)<1.5)*(psi_r_rated)+(1-(u(2)<1.5))*(((u(2)<2.5)*(psi_fixed)+(1-(u(2)<2.5))*(((u(2)<3.5)*(u(3))+(1-(u(2)<3.5))*(u(4))))))))<=(psi_min))*(psi_min)))>=(psi_r_rated))*(psi_r_rated))))
+B	323	DTC_BLOCKS/Controller/Flux reference/psi_target in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	324	DTC_BLOCKS/Controller/Flux reference/dpsi	simulink/User-Defined Functions/Fcn	1	1	Expr=((((((u(1)-u(2))>(-psi_rate*Ts))*(u(1)-u(2))+((u(1)-u(2))<=(-psi_rate*Ts))*(-psi_rate*Ts)))<(psi_rate*Ts))*((((u(1)-u(2))>(-psi_rate*Ts))*(u(1)-u(2))+((u(1)-u(2))<=(-psi_rate*Ts))*(-psi_rate*Ts)))+(((((u(1)-u(2))>(-psi_rate*Ts))*(u(1)-u(2))+((u(1)-u(2))<=(-psi_rate*Ts))*(-psi_rate*Ts)))>=(psi_rate*Ts))*(psi_rate*Ts))
+B	325	DTC_BLOCKS/Controller/Flux reference/dpsi in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	326	DTC_BLOCKS/Controller/Flux reference/psi_ref	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+u(2)
+B	327	DTC_BLOCKS/Controller/Flux reference/psi_ref in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	328	DTC_BLOCKS/Controller/Flux reference/dpsi_rate	simulink/User-Defined Functions/Fcn	1	1	Expr=u/Ts
+B	329	DTC_BLOCKS/Controller/DTC flux observer and switching table	built-in/Subsystem	14	5	BackgroundColor=cyan
+B	330	DTC_BLOCKS/Controller/DTC flux observer and switching table/i_alpha	built-in/Inport	0	1	Port=1
+B	331	DTC_BLOCKS/Controller/DTC flux observer and switching table/i_beta	built-in/Inport	0	1	Port=2
+B	332	DTC_BLOCKS/Controller/DTC flux observer and switching table/i_alpha_p	built-in/Inport	0	1	Port=3
+B	333	DTC_BLOCKS/Controller/DTC flux observer and switching table/i_beta_p	built-in/Inport	0	1	Port=4
+B	334	DTC_BLOCKS/Controller/DTC flux observer and switching table/va_app_p	built-in/Inport	0	1	Port=5
+B	335	DTC_BLOCKS/Controller/DTC flux observer and switching table/vb_app_p	built-in/Inport	0	1	Port=6
+B	336	DTC_BLOCKS/Controller/DTC flux observer and switching table/psi_ref	built-in/Inport	0	1	Port=7
+B	337	DTC_BLOCKS/Controller/DTC flux observer and switching table/Te_ref	built-in/Inport	0	1	Port=8
+B	338	DTC_BLOCKS/Controller/DTC flux observer and switching table/w_u	built-in/Inport	0	1	Port=9
+B	339	DTC_BLOCKS/Controller/DTC flux observer and switching table/Lm_c	built-in/Inport	0	1	Port=10
+B	340	DTC_BLOCKS/Controller/DTC flux observer and switching table/Ls_c	built-in/Inport	0	1	Port=11
+B	341	DTC_BLOCKS/Controller/DTC flux observer and switching table/Lr_c	built-in/Inport	0	1	Port=12
+B	342	DTC_BLOCKS/Controller/DTC flux observer and switching table/sLs_c	built-in/Inport	0	1	Port=13
+B	343	DTC_BLOCKS/Controller/DTC flux observer and switching table/tr_c	built-in/Inport	0	1	Port=14
+B	344	DTC_BLOCKS/Controller/DTC flux observer and switching table/da out	built-in/Outport	1	0	Port=1Position=1480    30  1510    44
+B	345	DTC_BLOCKS/Controller/DTC flux observer and switching table/db out	built-in/Outport	1	0	Port=2Position=1480    90  1510   104
+B	346	DTC_BLOCKS/Controller/DTC flux observer and switching table/dc out	built-in/Outport	1	0	Port=3Position=1480   150  1510   164
+B	347	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_mag out	built-in/Outport	1	0	Port=4Position=1480   210  1510   224
+B	348	DTC_BLOCKS/Controller/DTC flux observer and switching table/Te_est out	built-in/Outport	1	0	Port=5Position=1480   270  1510   284
+B	349	DTC_BLOCKS/Controller/DTC flux observer and switching table/psr_cm_alpha(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690   30  750   60
+B	350	DTC_BLOCKS/Controller/DTC flux observer and switching table/psr_cm_beta(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  100  750  130
+B	351	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_alpha(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  310  750  340
+B	352	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_beta(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  380  750  410
+B	353	DTC_BLOCKS/Controller/DTC flux observer and switching table/c_psi(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=1Position=690  730  750  760
+B	354	DTC_BLOCKS/Controller/DTC flux observer and switching table/c_T(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  870  750  900
+B	355	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_a(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   170  1370   200
+B	356	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_b(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   240  1370   270
+B	357	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_c(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=1310   310  1370   340
+B	358	DTC_BLOCKS/Controller/DTC flux observer and switching table/psr_cm_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*((u(3)/u(4))*u(5)-u(1)/u(4)-pp*u(6)*u(2))
+B	359	DTC_BLOCKS/Controller/DTC flux observer and switching table/psr_cm_alpha in	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	360	DTC_BLOCKS/Controller/DTC flux observer and switching table/psr_cm_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=u(2)+Ts*((u(3)/u(4))*u(5)-u(2)/u(4)+pp*u(6)*u(1))
+B	361	DTC_BLOCKS/Controller/DTC flux observer and switching table/psr_cm_beta in	simulink/Signal Routing/Mux	6	1	Inputs=6
+B	362	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_cm_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/u(2))*u(3)+u(4)*u(5)
+B	363	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_cm_alpha in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	364	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_cm_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/u(2))*u(3)+u(4)*u(5)
+B	365	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_cm_beta in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	366	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(u(2)-Rs*0.5*(u(3)+u(4))-wc_cm*(u(1)-u(5)))
+B	367	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_alpha in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	368	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(u(2)-Rs*0.5*(u(3)+u(4))-wc_cm*(u(1)-u(5)))
+B	369	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_beta in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	370	DTC_BLOCKS/Controller/DTC flux observer and switching table/Te_est	simulink/User-Defined Functions/Fcn	1	1	Expr=1.5*pp*(u(1)*u(4)-u(2)*u(3))
+B	371	DTC_BLOCKS/Controller/DTC flux observer and switching table/Te_est in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	372	DTC_BLOCKS/Controller/DTC flux observer and switching table/iq_for_flux_ref	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)/(1.5*pp*(u(2)/u(3))*(((u(4))>(0.05*psi_r_rated))*(u(4))+((u(4))<=(0.05*psi_r_rated))*(0.05*psi_r_rated)))
+B	373	DTC_BLOCKS/Controller/DTC flux observer and switching table/iq_for_flux_ref in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	374	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_ref	simulink/User-Defined Functions/Fcn	1	1	Expr=sqrt((u(1)/u(2)*u(3))*(u(1)/u(2)*u(3))+(u(4)*u(5))*(u(4)*u(5)))
+B	375	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_ref in	simulink/Signal Routing/Mux	5	1	Inputs=5
+B	376	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_mag	simulink/User-Defined Functions/Fcn	1	1	Expr=sqrt(u(1)*u(1)+u(2)*u(2))
+B	377	DTC_BLOCKS/Controller/DTC flux observer and switching table/psis_mag in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	378	DTC_BLOCKS/Controller/DTC flux observer and switching table/c_psi	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)<u(2)-h_psi)*(1)+(1-(u(1)<u(2)-h_psi))*(((u(1)>u(2)+h_psi)*(0)+(1-(u(1)>u(2)+h_psi))*(u(3)))))
+B	379	DTC_BLOCKS/Controller/DTC flux observer and switching table/c_psi in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	380	DTC_BLOCKS/Controller/DTC flux observer and switching table/e_T	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-u(2)
+B	381	DTC_BLOCKS/Controller/DTC flux observer and switching table/e_T in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	382	DTC_BLOCKS/Controller/DTC flux observer and switching table/c_T	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)>h_T)*(1)+(1-(u(1)>h_T))*(((u(1)<-h_T)*(-1)+(1-(u(1)<-h_T))*(((((u(2)>0.5)*(u(1)<=0)+(u(2)<-0.5)*(u(1)>=0))>0)*(0)+(1-(((u(2)>0.5)*(u(1)<=0)+(u(2)<-0.5)*(u(1)>=0))>0))*(u(2)))))))
+B	383	DTC_BLOCKS/Controller/DTC flux observer and switching table/c_T in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	384	DTC_BLOCKS/Controller/DTC flux observer and switching table/sector	simulink/User-Defined Functions/Fcn	1	1	Expr=floor((atan2(u(2),u(1))+pi6)/pi3)-6*floor(floor((atan2(u(2),u(1))+pi6)/pi3)/6)+1
+B	385	DTC_BLOCKS/Controller/DTC flux observer and switching table/sector in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	386	DTC_BLOCKS/Controller/DTC flux observer and switching table/vector before wrap	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+u(2)*(2-u(3))
+B	387	DTC_BLOCKS/Controller/DTC flux observer and switching table/vector before wrap in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	388	DTC_BLOCKS/Controller/DTC flux observer and switching table/vector	simulink/User-Defined Functions/Fcn	1	1	Expr=(u-1)-6*floor((u-1)/6)+1
+B	389	DTC_BLOCKS/Controller/DTC flux observer and switching table/magnetise	simulink/User-Defined Functions/Fcn	1	1	Expr=(abs(u(1))<0.5)*(u(2)<0.9*u(3))
+B	390	DTC_BLOCKS/Controller/DTC flux observer and switching table/magnetise in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	391	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_a	simulink/User-Defined Functions/Fcn	1	1	Expr=((abs(u(1))>0.5)*((abs(u(2)-1)<0.5)+(abs(u(2)-2)<0.5)+(abs(u(2)-6)<0.5))+(1-(abs(u(1))>0.5))*(((u(4))*((abs(u(3)-1)<0.5)+(abs(u(3)-2)<0.5)+(abs(u(3)-6)<0.5))+(1-(u(4)))*(((u(5)+u(6)+u(7))>1.5)))))
+B	392	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_a in	simulink/Signal Routing/Mux	7	1	Inputs=7
+B	393	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_b	simulink/User-Defined Functions/Fcn	1	1	Expr=((abs(u(1))>0.5)*((abs(u(2)-2)<0.5)+(abs(u(2)-3)<0.5)+(abs(u(2)-4)<0.5))+(1-(abs(u(1))>0.5))*(((u(4))*((abs(u(3)-2)<0.5)+(abs(u(3)-3)<0.5)+(abs(u(3)-4)<0.5))+(1-(u(4)))*(((u(5)+u(6)+u(7))>1.5)))))
+B	394	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_b in	simulink/Signal Routing/Mux	7	1	Inputs=7
+B	395	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_c	simulink/User-Defined Functions/Fcn	1	1	Expr=((abs(u(1))>0.5)*((abs(u(2)-4)<0.5)+(abs(u(2)-5)<0.5)+(abs(u(2)-6)<0.5))+(1-(abs(u(1))>0.5))*(((u(4))*((abs(u(3)-4)<0.5)+(abs(u(3)-5)<0.5)+(abs(u(3)-6)<0.5))+(1-(u(4)))*(((u(5)+u(6)+u(7))>1.5)))))
+B	396	DTC_BLOCKS/Controller/DTC flux observer and switching table/leg_c in	simulink/Signal Routing/Mux	7	1	Inputs=7
+B	397	DTC_BLOCKS/Controller/Applied voltage and current observer	built-in/Subsystem	9	4	BackgroundColor=cyan
+B	398	DTC_BLOCKS/Controller/Applied voltage and current observer/da	built-in/Inport	0	1	Port=1
+B	399	DTC_BLOCKS/Controller/Applied voltage and current observer/db	built-in/Inport	0	1	Port=2
+B	400	DTC_BLOCKS/Controller/Applied voltage and current observer/dc	built-in/Inport	0	1	Port=3
+B	401	DTC_BLOCKS/Controller/Applied voltage and current observer/ib_m	built-in/Inport	0	1	Port=4
+B	402	DTC_BLOCKS/Controller/Applied voltage and current observer/w_u	built-in/Inport	0	1	Port=5
+B	403	DTC_BLOCKS/Controller/Applied voltage and current observer/Lm_c	built-in/Inport	0	1	Port=6
+B	404	DTC_BLOCKS/Controller/Applied voltage and current observer/Ls_c	built-in/Inport	0	1	Port=7
+B	405	DTC_BLOCKS/Controller/Applied voltage and current observer/Lr_c	built-in/Inport	0	1	Port=8
+B	406	DTC_BLOCKS/Controller/Applied voltage and current observer/D_c	built-in/Inport	0	1	Port=9
+B	407	DTC_BLOCKS/Controller/Applied voltage and current observer/va_app_p out	built-in/Outport	1	0	Port=1Position=860   30  890   44
+B	408	DTC_BLOCKS/Controller/Applied voltage and current observer/vb_app_p out	built-in/Outport	1	0	Port=2Position=860   90  890  104
+B	409	DTC_BLOCKS/Controller/Applied voltage and current observer/obs1_p out	built-in/Outport	1	0	Port=3Position=860  150  890  164
+B	410	DTC_BLOCKS/Controller/Applied voltage and current observer/obs3_p out	built-in/Outport	1	0	Port=4Position=860  210  890  224
+B	411	DTC_BLOCKS/Controller/Applied voltage and current observer/va_app(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690   30  750   60
+B	412	DTC_BLOCKS/Controller/Applied voltage and current observer/vb_app(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  100  750  130
+B	413	DTC_BLOCKS/Controller/Applied voltage and current observer/obs1(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  520  750  550
+B	414	DTC_BLOCKS/Controller/Applied voltage and current observer/obs2(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  590  750  620
+B	415	DTC_BLOCKS/Controller/Applied voltage and current observer/obs3(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  660  750  690
+B	416	DTC_BLOCKS/Controller/Applied voltage and current observer/obs4(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690  730  750  760
+B	417	DTC_BLOCKS/Controller/Applied voltage and current observer/va_app	simulink/User-Defined Functions/Fcn	1	1	Expr=(2/3)*((u(1)-0.5)*Vdc-0.5*((u(2)-0.5)*Vdc+(u(3)-0.5)*Vdc))
+B	418	DTC_BLOCKS/Controller/Applied voltage and current observer/va_app in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	419	DTC_BLOCKS/Controller/Applied voltage and current observer/vb_app	simulink/User-Defined Functions/Fcn	1	1	Expr=((u(1)-0.5)*Vdc-(u(2)-0.5)*Vdc)/sqrt(3)
+B	420	DTC_BLOCKS/Controller/Applied voltage and current observer/vb_app in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	421	DTC_BLOCKS/Controller/Applied voltage and current observer/obs is_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(7)*u(1)-u(5)*u(3))/u(8)
+B	422	DTC_BLOCKS/Controller/Applied voltage and current observer/obs is_alpha in	simulink/Signal Routing/Mux	8	1	Inputs=8
+B	423	DTC_BLOCKS/Controller/Applied voltage and current observer/obs is_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(7)*u(2)-u(5)*u(4))/u(8)
+B	424	DTC_BLOCKS/Controller/Applied voltage and current observer/obs is_beta in	simulink/Signal Routing/Mux	8	1	Inputs=8
+B	425	DTC_BLOCKS/Controller/Applied voltage and current observer/obs ir_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(6)*u(3)-u(5)*u(1))/u(8)
+B	426	DTC_BLOCKS/Controller/Applied voltage and current observer/obs ir_alpha in	simulink/Signal Routing/Mux	8	1	Inputs=8
+B	427	DTC_BLOCKS/Controller/Applied voltage and current observer/obs ir_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(6)*u(4)-u(5)*u(2))/u(8)
+B	428	DTC_BLOCKS/Controller/Applied voltage and current observer/obs ir_beta in	simulink/Signal Routing/Mux	8	1	Inputs=8
+B	429	DTC_BLOCKS/Controller/Applied voltage and current observer/ib error	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-(-0.5*u(2)+s32*u(3))
+B	430	DTC_BLOCKS/Controller/Applied voltage and current observer/ib error in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	431	DTC_BLOCKS/Controller/Applied voltage and current observer/obs1	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(u(2)-Rs*u(3)+Ko*(-0.5)*u(4))
+B	432	DTC_BLOCKS/Controller/Applied voltage and current observer/obs1 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	433	DTC_BLOCKS/Controller/Applied voltage and current observer/obs2	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(u(2)-Rs*u(3)+Ko*s32*u(4))
+B	434	DTC_BLOCKS/Controller/Applied voltage and current observer/obs2 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	435	DTC_BLOCKS/Controller/Applied voltage and current observer/obs3	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)+Ts*(-Rr*u(3)-pp*u(4)*u(2))
+B	436	DTC_BLOCKS/Controller/Applied voltage and current observer/obs3 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	437	DTC_BLOCKS/Controller/Applied voltage and current observer/obs4	simulink/User-Defined Functions/Fcn	1	1	Expr=u(2)+Ts*(-Rr*u(3)+pp*u(4)*u(1))
+B	438	DTC_BLOCKS/Controller/Applied voltage and current observer/obs4 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	439	DTC_BLOCKS/Controller/dpsi_rate not used in DTC	simulink/Sinks/Terminator	1	0	
+B	440	DTC_BLOCKS/Inverter and motor	built-in/Subsystem	9	20	BackgroundColor=lightBlue
+B	441	DTC_BLOCKS/Inverter and motor/da	built-in/Inport	0	1	Port=1
+B	442	DTC_BLOCKS/Inverter and motor/db	built-in/Inport	0	1	Port=2
+B	443	DTC_BLOCKS/Inverter and motor/dc	built-in/Inport	0	1	Port=3
+B	444	DTC_BLOCKS/Inverter and motor/neutral	built-in/Inport	0	1	Port=4
+B	445	DTC_BLOCKS/Inverter and motor/TL	built-in/Inport	0	1	Port=5
+B	446	DTC_BLOCKS/Inverter and motor/J_extra	built-in/Inport	0	1	Port=6
+B	447	DTC_BLOCKS/Inverter and motor/f_speed	built-in/Inport	0	1	Port=7
+B	448	DTC_BLOCKS/Inverter and motor/f_cur	built-in/Inport	0	1	Port=8
+B	449	DTC_BLOCKS/Inverter and motor/f_open	built-in/Inport	0	1	Port=9
+B	450	DTC_BLOCKS/Inverter and motor/ia out	built-in/Outport	1	0	Port=1Position=1400    30  1430    44
+B	451	DTC_BLOCKS/Inverter and motor/ib out	built-in/Outport	1	0	Port=2Position=1400    90  1430   104
+B	452	DTC_BLOCKS/Inverter and motor/ic out	built-in/Outport	1	0	Port=3Position=1400   150  1430   164
+B	453	DTC_BLOCKS/Inverter and motor/w out	built-in/Outport	1	0	Port=4Position=1400   210  1430   224
+B	454	DTC_BLOCKS/Inverter and motor/Te out	built-in/Outport	1	0	Port=5Position=1400   270  1430   284
+B	455	DTC_BLOCKS/Inverter and motor/psir_mag out	built-in/Outport	1	0	Port=6Position=1400   330  1430   344
+B	456	DTC_BLOCKS/Inverter and motor/P_in out	built-in/Outport	1	0	Port=7Position=1400   390  1430   404
+B	457	DTC_BLOCKS/Inverter and motor/Pel out	built-in/Outport	1	0	Port=8Position=1400   450  1430   464
+B	458	DTC_BLOCKS/Inverter and motor/Pcond out	built-in/Outport	1	0	Port=9Position=1400   510  1430   524
+B	459	DTC_BLOCKS/Inverter and motor/Psw out	built-in/Outport	1	0	Port=10Position=1400   570  1430   584
+B	460	DTC_BLOCKS/Inverter and motor/Pfe out	built-in/Outport	1	0	Port=11Position=1400   630  1430   644
+B	461	DTC_BLOCKS/Inverter and motor/Pout out	built-in/Outport	1	0	Port=12Position=1400   690  1430   704
+B	462	DTC_BLOCKS/Inverter and motor/Pfric out	built-in/Outport	1	0	Port=13Position=1400   750  1430   764
+B	463	DTC_BLOCKS/Inverter and motor/transitions out	built-in/Outport	1	0	Port=14Position=1400   810  1430   824
+B	464	DTC_BLOCKS/Inverter and motor/psim_mag out	built-in/Outport	1	0	Port=15Position=1400   870  1430   884
+B	465	DTC_BLOCKS/Inverter and motor/mode out	built-in/Outport	1	0	Port=16Position=1400   930  1430   944
+B	466	DTC_BLOCKS/Inverter and motor/ia_m out	built-in/Outport	1	0	Port=17Position=1400   990  1430  1004
+B	467	DTC_BLOCKS/Inverter and motor/ib_m out	built-in/Outport	1	0	Port=18Position=1400  1050  1430  1064
+B	468	DTC_BLOCKS/Inverter and motor/ic_m out	built-in/Outport	1	0	Port=19Position=1400  1110  1430  1124
+B	469	DTC_BLOCKS/Inverter and motor/w_m out	built-in/Outport	1	0	Port=20Position=1400  1170  1430  1184
+B	470	DTC_BLOCKS/Inverter and motor/PWM modulator	built-in/Subsystem	3	6	BackgroundColor=orange
+B	471	DTC_BLOCKS/Inverter and motor/PWM modulator/da	built-in/Inport	0	1	Port=1
+B	472	DTC_BLOCKS/Inverter and motor/PWM modulator/db	built-in/Inport	0	1	Port=2
+B	473	DTC_BLOCKS/Inverter and motor/PWM modulator/dc	built-in/Inport	0	1	Port=3
+B	474	DTC_BLOCKS/Inverter and motor/PWM modulator/vpa out	built-in/Outport	1	0	Port=1Position=1200    30  1230    44
+B	475	DTC_BLOCKS/Inverter and motor/PWM modulator/vpb out	built-in/Outport	1	0	Port=2Position=1200    90  1230   104
+B	476	DTC_BLOCKS/Inverter and motor/PWM modulator/vpc out	built-in/Outport	1	0	Port=3Position=1200   150  1230   164
+B	477	DTC_BLOCKS/Inverter and motor/PWM modulator/trans_a out	built-in/Outport	1	0	Port=4Position=1200   210  1230   224
+B	478	DTC_BLOCKS/Inverter and motor/PWM modulator/trans_b out	built-in/Outport	1	0	Port=5Position=1200   270  1230   284
+B	479	DTC_BLOCKS/Inverter and motor/PWM modulator/trans_c out	built-in/Outport	1	0	Port=6Position=1200   330  1230   344
+B	480	DTC_BLOCKS/Inverter and motor/PWM modulator/Clock	simulink/Sources/Clock	0	1	
+B	481	DTC_BLOCKS/Inverter and motor/PWM modulator/Step start time	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=h_step
+B	482	DTC_BLOCKS/Inverter and motor/PWM modulator/Step in carrier period	simulink/User-Defined Functions/Fcn	1	1	Expr=floor(u/h_step+0.5)-2*NT*floor(floor(u/h_step+0.5)/(2*NT))
+B	483	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	484	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a on-fraction	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*(((((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))<(1))*(((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))+((((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))>=(1))*(1))+(1-(u(1)<NT))*(((((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))<(1))*(((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))+((((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))>=(1))*(1))
+B	485	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a on at step start	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*((u(1)-NT*(u(1)>=NT))>=NT-(u(2)*NT))+(1-(u(1)<NT))*((u(1)-NT*(u(1)>=NT))<(u(2)*NT))
+B	486	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a on at step end	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*((u(1)-NT*(u(1)>=NT))+1>NT-(u(2)*NT))+(1-(u(1)<NT))*((u(1)-NT*(u(1)>=NT))+1<=(u(2)*NT))
+B	487	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a state last step	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	488	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a edge mux	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	489	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a transitions	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u(1)-u(2))+abs(u(1)-u(3))
+B	490	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a minus half	simulink/Math Operations/Bias	1	1	Bias=-0.5
+B	491	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg a pole voltage	simulink/Math Operations/Gain	1	1	Gain=Vdc
+B	492	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	493	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b on-fraction	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*(((((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))<(1))*(((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))+((((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))>=(1))*(1))+(1-(u(1)<NT))*(((((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))<(1))*(((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))+((((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))>=(1))*(1))
+B	494	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b on at step start	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*((u(1)-NT*(u(1)>=NT))>=NT-(u(2)*NT))+(1-(u(1)<NT))*((u(1)-NT*(u(1)>=NT))<(u(2)*NT))
+B	495	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b on at step end	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*((u(1)-NT*(u(1)>=NT))+1>NT-(u(2)*NT))+(1-(u(1)<NT))*((u(1)-NT*(u(1)>=NT))+1<=(u(2)*NT))
+B	496	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b state last step	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	497	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b edge mux	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	498	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b transitions	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u(1)-u(2))+abs(u(1)-u(3))
+B	499	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b minus half	simulink/Math Operations/Bias	1	1	Bias=-0.5
+B	500	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg b pole voltage	simulink/Math Operations/Gain	1	1	Gain=Vdc
+B	501	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	502	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c on-fraction	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*(((((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))<(1))*(((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))+((((((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))>(0))*((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))+(((u(1)-NT*(u(1)>=NT))+1-NT+(u(2)*NT))<=(0))*(0)))>=(1))*(1))+(1-(u(1)<NT))*(((((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))<(1))*(((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))+((((((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))>(0))*((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))+(((u(2)*NT)-(u(1)-NT*(u(1)>=NT)))<=(0))*(0)))>=(1))*(1))
+B	503	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c on at step start	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*((u(1)-NT*(u(1)>=NT))>=NT-(u(2)*NT))+(1-(u(1)<NT))*((u(1)-NT*(u(1)>=NT))<(u(2)*NT))
+B	504	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c on at step end	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<NT)*((u(1)-NT*(u(1)>=NT))+1>NT-(u(2)*NT))+(1-(u(1)<NT))*((u(1)-NT*(u(1)>=NT))+1<=(u(2)*NT))
+B	505	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c state last step	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	506	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c edge mux	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	507	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c transitions	simulink/User-Defined Functions/Fcn	1	1	Expr=abs(u(1)-u(2))+abs(u(1)-u(3))
+B	508	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c minus half	simulink/Math Operations/Bias	1	1	Bias=-0.5
+B	509	DTC_BLOCKS/Inverter and motor/PWM modulator/Leg c pole voltage	simulink/Math Operations/Gain	1	1	Gain=Vdc
+B	510	DTC_BLOCKS/Inverter and motor/Induction motor	built-in/Subsystem	6	9	BackgroundColor=lightBlue
+B	511	DTC_BLOCKS/Inverter and motor/Induction motor/vpa	built-in/Inport	0	1	Port=1
+B	512	DTC_BLOCKS/Inverter and motor/Induction motor/vpb	built-in/Inport	0	1	Port=2
+B	513	DTC_BLOCKS/Inverter and motor/Induction motor/vpc	built-in/Inport	0	1	Port=3
+B	514	DTC_BLOCKS/Inverter and motor/Induction motor/TL	built-in/Inport	0	1	Port=4
+B	515	DTC_BLOCKS/Inverter and motor/Induction motor/J_extra	built-in/Inport	0	1	Port=5
+B	516	DTC_BLOCKS/Inverter and motor/Induction motor/mode	built-in/Inport	0	1	Port=6
+B	517	DTC_BLOCKS/Inverter and motor/Induction motor/ia out	built-in/Outport	1	0	Port=1Position=2100    30  2130    44
+B	518	DTC_BLOCKS/Inverter and motor/Induction motor/ib out	built-in/Outport	1	0	Port=2Position=2100    90  2130   104
+B	519	DTC_BLOCKS/Inverter and motor/Induction motor/ic out	built-in/Outport	1	0	Port=3Position=2100   150  2130   164
+B	520	DTC_BLOCKS/Inverter and motor/Induction motor/w out	built-in/Outport	1	0	Port=4Position=2100   210  2130   224
+B	521	DTC_BLOCKS/Inverter and motor/Induction motor/Te out	built-in/Outport	1	0	Port=5Position=2100   270  2130   284
+B	522	DTC_BLOCKS/Inverter and motor/Induction motor/psir_mag out	built-in/Outport	1	0	Port=6Position=2100   330  2130   344
+B	523	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha out	built-in/Outport	1	0	Port=7Position=2100   390  2130   404
+B	524	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta out	built-in/Outport	1	0	Port=8Position=2100   450  2130   464
+B	525	DTC_BLOCKS/Inverter and motor/Induction motor/psim_mag out	built-in/Outport	1	0	Port=9Position=2100   510  2130   524
+B	526	DTC_BLOCKS/Inverter and motor/Induction motor/lam_alpha	simulink/Continuous/Integrator	3	1	ExternalReset=risingInitialConditionSource=external
+B	527	DTC_BLOCKS/Inverter and motor/Induction motor/psi_s_beta	simulink/Continuous/Integrator	1	1	
+B	528	DTC_BLOCKS/Inverter and motor/Induction motor/psi_r_alpha	simulink/Continuous/Integrator	1	1	
+B	529	DTC_BLOCKS/Inverter and motor/Induction motor/psi_r_beta	simulink/Continuous/Integrator	1	1	
+B	530	DTC_BLOCKS/Inverter and motor/Induction motor/omega_m	simulink/Continuous/Integrator	1	1	
+B	531	DTC_BLOCKS/Inverter and motor/Induction motor/g_a	simulink/User-Defined Functions/Fcn	1	1	Expr=(u<1.5)/Lls+(u>2.5)/(3*Lls)
+B	532	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha last step	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	533	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta last step	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	534	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 1	simulink/User-Defined Functions/Fcn	1	1	Expr=Lm_rated+sat_on*(Lm0/(1+sat_a*(sqrt(u(1)*u(1)+u(2)*u(2))/psi_k)^sat_b)-Lm_rated)
+B	535	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 1 in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	536	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 1	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)*u(2)+u(3)/Llr)/(1/u(4)+u(1)+1/Llr)
+B	537	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 1 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	538	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 1	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/Lls+u(2)/Llr)/(1/u(3)+1/Lls+1/Llr)
+B	539	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 1 in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	540	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 2	simulink/User-Defined Functions/Fcn	1	1	Expr=Lm_rated+sat_on*(Lm0/(1+sat_a*(sqrt(u(1)*u(1)+u(2)*u(2))/psi_k)^sat_b)-Lm_rated)
+B	541	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 2 in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	542	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 2	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)*u(2)+u(3)/Llr)/(1/u(4)+u(1)+1/Llr)
+B	543	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 2 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	544	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 2	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/Lls+u(2)/Llr)/(1/u(3)+1/Lls+1/Llr)
+B	545	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 2 in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	546	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 3	simulink/User-Defined Functions/Fcn	1	1	Expr=Lm_rated+sat_on*(Lm0/(1+sat_a*(sqrt(u(1)*u(1)+u(2)*u(2))/psi_k)^sat_b)-Lm_rated)
+B	547	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 3 in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	548	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 3	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)*u(2)+u(3)/Llr)/(1/u(4)+u(1)+1/Llr)
+B	549	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 3 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	550	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 3	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/Lls+u(2)/Llr)/(1/u(3)+1/Lls+1/Llr)
+B	551	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 3 in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	552	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 4	simulink/User-Defined Functions/Fcn	1	1	Expr=Lm_rated+sat_on*(Lm0/(1+sat_a*(sqrt(u(1)*u(1)+u(2)*u(2))/psi_k)^sat_b)-Lm_rated)
+B	553	DTC_BLOCKS/Inverter and motor/Induction motor/Lms iteration 4 in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	554	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 4	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)*u(2)+u(3)/Llr)/(1/u(4)+u(1)+1/Llr)
+B	555	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha iteration 4 in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	556	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 4	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/Lls+u(2)/Llr)/(1/u(3)+1/Lls+1/Llr)
+B	557	DTC_BLOCKS/Inverter and motor/Induction motor/psim_beta iteration 4 in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	558	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha phase open	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)/Llr)/(1/u(2)+1/Llr)
+B	559	DTC_BLOCKS/Inverter and motor/Induction motor/psim_alpha phase open in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	560	DTC_BLOCKS/Inverter and motor/Induction motor/i_s_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(u(2)-u(3))
+B	561	DTC_BLOCKS/Inverter and motor/Induction motor/i_s_alpha in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	562	DTC_BLOCKS/Inverter and motor/Induction motor/i_s_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)-u(2))/Lls
+B	563	DTC_BLOCKS/Inverter and motor/Induction motor/i_s_beta in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	564	DTC_BLOCKS/Inverter and motor/Induction motor/i_r_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)-u(2))/Llr
+B	565	DTC_BLOCKS/Inverter and motor/Induction motor/i_r_alpha in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	566	DTC_BLOCKS/Inverter and motor/Induction motor/i_r_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)-u(2))/Llr
+B	567	DTC_BLOCKS/Inverter and motor/Induction motor/i_r_beta in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	568	DTC_BLOCKS/Inverter and motor/Induction motor/Te	simulink/User-Defined Functions/Fcn	1	1	Expr=1.5*pp*(u(1)*u(4)-u(2)*u(3))
+B	569	DTC_BLOCKS/Inverter and motor/Induction motor/Te in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	570	DTC_BLOCKS/Inverter and motor/Induction motor/v_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<1.5)*(2/3)*(u(2)-0.5*(u(3)+u(4)))+(u(1)>2.5)*(-(u(3)+u(4)))
+B	571	DTC_BLOCKS/Inverter and motor/Induction motor/v_alpha in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	572	DTC_BLOCKS/Inverter and motor/Induction motor/v_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)-u(2))/sqrt(3)
+B	573	DTC_BLOCKS/Inverter and motor/Induction motor/v_beta in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	574	DTC_BLOCKS/Inverter and motor/Induction motor/d lam_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<1.5)*(u(2)-Rs*u(3))+(u(1)>2.5)*(u(2)-3*Rs*u(3))
+B	575	DTC_BLOCKS/Inverter and motor/Induction motor/d lam_alpha in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	576	DTC_BLOCKS/Inverter and motor/Induction motor/d psi_s_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-Rs*u(2)
+B	577	DTC_BLOCKS/Inverter and motor/Induction motor/d psi_s_beta in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	578	DTC_BLOCKS/Inverter and motor/Induction motor/d psi_r_alpha	simulink/User-Defined Functions/Fcn	1	1	Expr=-Rr*u(1)-pp*u(2)*u(3)
+B	579	DTC_BLOCKS/Inverter and motor/Induction motor/d psi_r_alpha in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	580	DTC_BLOCKS/Inverter and motor/Induction motor/d psi_r_beta	simulink/User-Defined Functions/Fcn	1	1	Expr=-Rr*u(1)+pp*u(2)*u(3)
+B	581	DTC_BLOCKS/Inverter and motor/Induction motor/d psi_r_beta in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	582	DTC_BLOCKS/Inverter and motor/Induction motor/d omega_m	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)-u(2)-Bm*u(3))/(Jm+u(4))
+B	583	DTC_BLOCKS/Inverter and motor/Induction motor/d omega_m in	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	584	DTC_BLOCKS/Inverter and motor/Induction motor/mode 3 entered	simulink/User-Defined Functions/Fcn	1	1	Expr=u>2.5
+B	585	DTC_BLOCKS/Inverter and motor/Induction motor/ia	simulink/User-Defined Functions/Fcn	1	1	Expr=(u(1)<1.5)*u(2)
+B	586	DTC_BLOCKS/Inverter and motor/Induction motor/ia in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	587	DTC_BLOCKS/Inverter and motor/Induction motor/ib	simulink/User-Defined Functions/Fcn	1	1	Expr=-(0.5+(u(1)>2.5))*u(2)+s32*u(3)
+B	588	DTC_BLOCKS/Inverter and motor/Induction motor/ib in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	589	DTC_BLOCKS/Inverter and motor/Induction motor/ic	simulink/User-Defined Functions/Fcn	1	1	Expr=-(0.5+(u(1)>2.5))*u(2)-s32*u(3)
+B	590	DTC_BLOCKS/Inverter and motor/Induction motor/ic in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	591	DTC_BLOCKS/Inverter and motor/Induction motor/psi_r magnitude	simulink/User-Defined Functions/Fcn	1	1	Expr=sqrt(u(1)*u(1)+u(2)*u(2))
+B	592	DTC_BLOCKS/Inverter and motor/Induction motor/psi_r magnitude in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	593	DTC_BLOCKS/Inverter and motor/Induction motor/psi_m magnitude	simulink/User-Defined Functions/Fcn	1	1	Expr=sqrt(u(1)*u(1)+u(2)*u(2))
+B	594	DTC_BLOCKS/Inverter and motor/Induction motor/psi_m magnitude in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	595	DTC_BLOCKS/Inverter and motor/Inverter losses	built-in/Subsystem	9	4	BackgroundColor=orange
+B	596	DTC_BLOCKS/Inverter and motor/Inverter losses/vpa	built-in/Inport	0	1	Port=1
+B	597	DTC_BLOCKS/Inverter and motor/Inverter losses/vpb	built-in/Inport	0	1	Port=2
+B	598	DTC_BLOCKS/Inverter and motor/Inverter losses/vpc	built-in/Inport	0	1	Port=3
+B	599	DTC_BLOCKS/Inverter and motor/Inverter losses/ia	built-in/Inport	0	1	Port=4
+B	600	DTC_BLOCKS/Inverter and motor/Inverter losses/ib	built-in/Inport	0	1	Port=5
+B	601	DTC_BLOCKS/Inverter and motor/Inverter losses/ic	built-in/Inport	0	1	Port=6
+B	602	DTC_BLOCKS/Inverter and motor/Inverter losses/trans_a	built-in/Inport	0	1	Port=7
+B	603	DTC_BLOCKS/Inverter and motor/Inverter losses/trans_b	built-in/Inport	0	1	Port=8
+B	604	DTC_BLOCKS/Inverter and motor/Inverter losses/trans_c	built-in/Inport	0	1	Port=9
+B	605	DTC_BLOCKS/Inverter and motor/Inverter losses/Pel out	built-in/Outport	1	0	Port=1Position=700   30  730   44
+B	606	DTC_BLOCKS/Inverter and motor/Inverter losses/Pcond out	built-in/Outport	1	0	Port=2Position=700   90  730  104
+B	607	DTC_BLOCKS/Inverter and motor/Inverter losses/Psw out	built-in/Outport	1	0	Port=3Position=700  150  730  164
+B	608	DTC_BLOCKS/Inverter and motor/Inverter losses/transitions out	built-in/Outport	1	0	Port=4Position=700  210  730  224
+B	609	DTC_BLOCKS/Inverter and motor/Inverter losses/Inverter mux	simulink/Signal Routing/Mux	9	1	Inputs=9
+B	610	DTC_BLOCKS/Inverter and motor/Inverter losses/Pel	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*u(4)+u(2)*u(5)+u(3)*u(6)
+B	611	DTC_BLOCKS/Inverter and motor/Inverter losses/Pcond	simulink/User-Defined Functions/Fcn	1	1	Expr=Vce0*(abs(u(4))+abs(u(5))+abs(u(6)))+rce*(u(4)*u(4)+u(5)*u(5)+u(6)*u(6))
+B	612	DTC_BLOCKS/Inverter and motor/Inverter losses/Psw	simulink/User-Defined Functions/Fcn	1	1	Expr=Esw*(Vdc/Vref_sw)/Iref_sw*(u(7)*abs(u(4))+u(8)*abs(u(5))+u(9)*abs(u(6)))/h_step
+B	613	DTC_BLOCKS/Inverter and motor/Inverter losses/Transition count	simulink/User-Defined Functions/Fcn	1	1	Expr=u(7)+u(8)+u(9)
+B	614	DTC_BLOCKS/Inverter and motor/Core loss	built-in/Subsystem	2	1	BackgroundColor=orange
+B	615	DTC_BLOCKS/Inverter and motor/Core loss/psim_alpha	built-in/Inport	0	1	Port=1
+B	616	DTC_BLOCKS/Inverter and motor/Core loss/psim_beta	built-in/Inport	0	1	Port=2
+B	617	DTC_BLOCKS/Inverter and motor/Core loss/Pfe out	built-in/Outport	1	0	Port=1Position=860   30  890   44
+B	618	DTC_BLOCKS/Inverter and motor/Core loss/psim_alpha sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	619	DTC_BLOCKS/Inverter and motor/Core loss/psim_beta sample	simulink/Discrete/Zero-Order Hold	1	1	SampleTime=Ts
+B	620	DTC_BLOCKS/Inverter and motor/Core loss/flux angle(k-1)	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0Position=690   30  750   60
+B	621	DTC_BLOCKS/Inverter and motor/Core loss/flux angle	simulink/User-Defined Functions/Fcn	1	1	Expr=atan2(u(2),u(1))
+B	622	DTC_BLOCKS/Inverter and motor/Core loss/flux angle in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	623	DTC_BLOCKS/Inverter and motor/Core loss/angle step	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)-u(2)
+B	624	DTC_BLOCKS/Inverter and motor/Core loss/angle step in	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	625	DTC_BLOCKS/Inverter and motor/Core loss/fe	simulink/User-Defined Functions/Fcn	1	1	Expr=(u-twopi*floor(u/twopi+0.5))/(twopi*Ts)
+B	626	DTC_BLOCKS/Inverter and motor/Core loss/Pfe	simulink/User-Defined Functions/Fcn	1	1	Expr=(kh*abs(u(1))+ke*u(1)*u(1))*(u(2)*u(2)+u(3)*u(3))
+B	627	DTC_BLOCKS/Inverter and motor/Core loss/Pfe in	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	628	DTC_BLOCKS/Inverter and motor/Neutral contactor	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	629	DTC_BLOCKS/Inverter and motor/Phase a opens	simulink/Discrete/Memory	1	1	InitialCondition=0
+B	630	DTC_BLOCKS/Inverter and motor/Mode mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	631	DTC_BLOCKS/Inverter and motor/Mode	simulink/User-Defined Functions/Fcn	1	1	Expr=1+u(1)*(1+u(2))
+B	632	DTC_BLOCKS/Inverter and motor/Load power mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	633	DTC_BLOCKS/Inverter and motor/Load power	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*u(2)
+B	634	DTC_BLOCKS/Inverter and motor/Friction power	simulink/User-Defined Functions/Fcn	1	1	Expr=Bm*u*u
+B	635	DTC_BLOCKS/Inverter and motor/Input power sum	simulink/Math Operations/Sum	4	1	Inputs=++++IconShape=rectangular
+B	636	DTC_BLOCKS/Inverter and motor/Speed fault delay	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0
+B	637	DTC_BLOCKS/Inverter and motor/Current fault delay	simulink/Discrete/Unit Delay	1	1	SampleTime=TsInitialCondition=0
+B	638	DTC_BLOCKS/Inverter and motor/Speed sensor mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	639	DTC_BLOCKS/Inverter and motor/Speed sensor	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(1-u(2))
+B	640	DTC_BLOCKS/Inverter and motor/Current sensor mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	641	DTC_BLOCKS/Inverter and motor/Current sensor a	simulink/User-Defined Functions/Fcn	1	1	Expr=u(1)*(1-u(2))
+B	642	DTC_BLOCKS/w_u (shown in the log)	simulink/Sinks/Terminator	1	0	
+B	643	DTC_BLOCKS/w_ref rpm	simulink/Math Operations/Gain	1	1	Gain=rad2rpm
+B	644	DTC_BLOCKS/w rpm	simulink/Math Operations/Gain	1	1	Gain=rad2rpm
+B	645	DTC_BLOCKS/Speed (rpm) mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	646	DTC_BLOCKS/Speed (rpm)	simulink/Sinks/Scope	1	0	
+B	647	DTC_BLOCKS/Torque (Nm) mux	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	648	DTC_BLOCKS/Torque (Nm)	simulink/Sinks/Scope	1	0	
+B	649	DTC_BLOCKS/Flux (Wb) mux	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	650	DTC_BLOCKS/Flux (Wb)	simulink/Sinks/Scope	1	0	
+B	651	DTC_BLOCKS/Phase currents (A) mux	simulink/Signal Routing/Mux	3	1	Inputs=3
+B	652	DTC_BLOCKS/Phase currents (A)	simulink/Sinks/Scope	1	0	
+B	653	DTC_BLOCKS/w_est rpm	simulink/Math Operations/Gain	1	1	Gain=rad2rpm
+B	654	DTC_BLOCKS/Speed true vs MRAS (rpm) mux	simulink/Signal Routing/Mux	2	1	Inputs=2
+B	655	DTC_BLOCKS/Speed true vs MRAS (rpm)	simulink/Sinks/Scope	1	0	
+B	656	DTC_BLOCKS/Fault flags mux	simulink/Signal Routing/Mux	4	1	Inputs=4
+B	657	DTC_BLOCKS/Fault flags	simulink/Sinks/Scope	1	0	
+B	658	DTC_BLOCKS/Input power (W)	simulink/Sinks/Scope	1	0	
+B	659	DTC_BLOCKS/Energy integrator	simulink/Continuous/Integrator	1	1	
+B	660	DTC_BLOCKS/J to Wh	simulink/Math Operations/Gain	1	1	Gain=1/3600
+B	661	DTC_BLOCKS/Energy (Wh)	simulink/Sinks/Display	1	0	
+B	662	DTC_BLOCKS/Energy meters	built-in/Subsystem	8	8	BackgroundColor=white
+B	663	DTC_BLOCKS/Energy meters/Pel	built-in/Inport	0	1	Port=1
+B	664	DTC_BLOCKS/Energy meters/Pcond	built-in/Inport	0	1	Port=2
+B	665	DTC_BLOCKS/Energy meters/Psw	built-in/Inport	0	1	Port=3
+B	666	DTC_BLOCKS/Energy meters/Pfe	built-in/Inport	0	1	Port=4
+B	667	DTC_BLOCKS/Energy meters/Pout	built-in/Inport	0	1	Port=5
+B	668	DTC_BLOCKS/Energy meters/Pfric	built-in/Inport	0	1	Port=6
+B	669	DTC_BLOCKS/Energy meters/Te	built-in/Inport	0	1	Port=7
+B	670	DTC_BLOCKS/Energy meters/ia	built-in/Inport	0	1	Port=8
+B	671	DTC_BLOCKS/Energy meters/E_el out	built-in/Outport	1	0	Port=1Position=400   30  430   44
+B	672	DTC_BLOCKS/Energy meters/E_cond out	built-in/Outport	1	0	Port=2Position=400   90  430  104
+B	673	DTC_BLOCKS/Energy meters/E_sw out	built-in/Outport	1	0	Port=3Position=400  150  430  164
+B	674	DTC_BLOCKS/Energy meters/E_fe out	built-in/Outport	1	0	Port=4Position=400  210  430  224
+B	675	DTC_BLOCKS/Energy meters/E_out out	built-in/Outport	1	0	Port=5Position=400  270  430  284
+B	676	DTC_BLOCKS/Energy meters/E_fric out	built-in/Outport	1	0	Port=6Position=400  330  430  344
+B	677	DTC_BLOCKS/Energy meters/int_Te out	built-in/Outport	1	0	Port=7Position=400  390  430  404
+B	678	DTC_BLOCKS/Energy meters/int_ia out	built-in/Outport	1	0	Port=8Position=400  450  430  464
+B	679	DTC_BLOCKS/Energy meters/E_el integrator	simulink/Continuous/Integrator	1	1	
+B	680	DTC_BLOCKS/Energy meters/E_cond integrator	simulink/Continuous/Integrator	1	1	
+B	681	DTC_BLOCKS/Energy meters/E_sw integrator	simulink/Continuous/Integrator	1	1	
+B	682	DTC_BLOCKS/Energy meters/E_fe integrator	simulink/Continuous/Integrator	1	1	
+B	683	DTC_BLOCKS/Energy meters/E_out integrator	simulink/Continuous/Integrator	1	1	
+B	684	DTC_BLOCKS/Energy meters/E_fric integrator	simulink/Continuous/Integrator	1	1	
+B	685	DTC_BLOCKS/Energy meters/int_Te integrator	simulink/Continuous/Integrator	1	1	
+B	686	DTC_BLOCKS/Energy meters/int_ia integrator	simulink/Continuous/Integrator	1	1	
+B	687	DTC_BLOCKS/Log mux	simulink/Signal Routing/Mux	35	1	Inputs=35
+B	688	DTC_BLOCKS/Log to workspace	simulink/Sinks/To Workspace	1	0	VariableName=bm_logSaveFormat=Structure With TimeDecimation=1MaxDataPoints=inf
+L	14	1	21	1
+L	20	1	21	2
+L	21	1	17	1
+L	15	1	22	1
+L	20	1	22	2
+L	22	1	18	1
+L	16	1	23	1
+L	20	1	23	2
+L	23	1	19	1
+L	6	1	7	1
+L	10	1	13	1
+L	11	1	13	2
+L	12	1	13	3
+L	7	1	24	1
+L	8	1	24	2
+L	13	1	24	3
+L	13	2	24	4
+L	13	3	24	5
+L	9	1	24	6
+L	2	1	26	1
+L	24	1	26	2
+L	25	1	26	3
+L	26	1	27	1
+L	29	1	50	1
+L	30	1	51	1
+L	31	1	52	1
+L	32	1	53	1
+L	33	1	54	1
+L	56	1	63	1
+L	63	1	64	1
+L	63	1	65	1
+L	63	1	67	1
+L	64	1	67	2
+L	65	1	67	3
+L	67	1	66	1
+L	65	1	68	1
+L	63	1	70	1
+L	64	1	70	2
+L	65	1	70	3
+L	70	1	69	1
+L	63	1	57	1
+L	64	1	58	1
+L	65	1	59	1
+L	66	1	60	1
+L	68	1	61	1
+L	69	1	62	1
+L	80	1	90	1
+L	79	1	90	2
+L	77	1	90	3
+L	78	1	90	4
+L	81	1	90	5
+L	90	1	89	1
+L	75	1	92	1
+L	89	1	92	2
+L	72	1	92	3
+L	92	1	91	1
+L	76	1	94	1
+L	73	1	94	2
+L	74	1	94	3
+L	91	1	94	4
+L	94	1	93	1
+L	93	1	87	1
+L	76	1	96	1
+L	73	1	96	2
+L	74	1	96	3
+L	91	1	96	4
+L	96	1	95	1
+L	95	1	88	1
+L	93	1	82	1
+L	95	1	83	1
+L	89	1	84	1
+L	87	1	85	1
+L	88	1	86	1
+L	116	1	134	1
+L	134	1	116	1
+L	134	1	135	1
+L	98	1	137	1
+L	117	1	137	2
+L	118	1	137	3
+L	119	1	137	4
+L	137	1	136	1
+L	98	1	139	1
+L	103	1	139	2
+L	139	1	138	1
+L	131	1	141	1
+L	130	1	141	2
+L	129	1	141	3
+L	102	1	141	4
+L	141	1	140	1
+L	135	1	143	1
+L	140	1	143	2
+L	104	1	143	3
+L	138	1	143	4
+L	123	1	143	5
+L	143	1	142	1
+L	142	1	123	1
+L	135	1	145	1
+L	124	1	145	2
+L	140	1	145	3
+L	136	1	145	4
+L	142	1	145	5
+L	138	1	145	6
+L	145	1	144	1
+L	124	1	147	1
+L	144	1	147	2
+L	147	1	146	1
+L	146	1	124	1
+L	144	1	149	1
+L	132	1	149	2
+L	149	1	148	1
+L	135	1	151	1
+L	131	1	151	2
+L	130	1	151	3
+L	146	1	151	4
+L	104	1	151	5
+L	151	1	150	1
+L	99	1	153	1
+L	120	1	153	2
+L	121	1	153	3
+L	122	1	153	4
+L	153	1	152	1
+L	99	1	155	1
+L	105	1	155	2
+L	155	1	154	1
+L	150	1	157	1
+L	154	1	157	2
+L	125	1	157	3
+L	157	1	156	1
+L	156	1	125	1
+L	150	1	159	1
+L	129	1	159	2
+L	152	1	159	3
+L	156	1	159	4
+L	159	1	158	1
+L	129	1	161	1
+L	158	1	161	2
+L	161	1	160	1
+L	150	1	163	1
+L	160	1	163	2
+L	163	1	162	1
+L	158	1	165	1
+L	126	1	165	2
+L	162	1	165	3
+L	165	1	164	1
+L	164	1	126	1
+L	158	1	167	1
+L	127	1	167	2
+L	162	1	167	3
+L	100	1	167	4
+L	101	1	167	5
+L	167	1	166	1
+L	166	1	127	1
+L	158	1	169	1
+L	128	1	169	2
+L	162	1	169	3
+L	154	1	169	4
+L	169	1	168	1
+L	168	1	128	1
+L	162	1	171	1
+L	164	1	171	2
+L	171	1	170	1
+L	164	1	172	1
+L	170	1	174	1
+L	168	1	174	2
+L	172	1	174	3
+L	174	1	173	1
+L	170	1	176	1
+L	173	1	176	2
+L	166	1	176	3
+L	168	1	176	4
+L	176	1	175	1
+L	170	1	178	1
+L	173	1	178	2
+L	175	1	178	3
+L	178	1	177	1
+L	160	1	180	1
+L	170	1	180	2
+L	180	1	179	1
+L	179	1	129	1
+L	130	1	182	1
+L	175	1	182	2
+L	182	1	181	1
+L	181	1	130	1
+L	131	1	184	1
+L	177	1	184	2
+L	184	1	183	1
+L	183	1	131	1
+L	175	1	186	1
+L	148	1	186	2
+L	186	1	185	1
+L	177	1	188	1
+L	185	1	188	2
+L	188	1	187	1
+L	187	1	132	1
+L	133	1	190	1
+L	175	1	190	2
+L	190	1	189	1
+L	189	1	133	1
+L	98	1	191	1
+L	191	1	117	1
+L	117	1	192	1
+L	192	1	118	1
+L	118	1	193	1
+L	193	1	119	1
+L	99	1	194	1
+L	194	1	120	1
+L	120	1	195	1
+L	195	1	121	1
+L	121	1	196	1
+L	196	1	122	1
+L	146	1	198	1
+L	103	1	198	2
+L	98	1	198	3
+L	198	1	197	1
+L	146	1	106	1
+L	183	1	107	1
+L	181	1	108	1
+L	189	1	109	1
+L	187	1	110	1
+L	197	1	111	1
+L	124	1	112	1
+L	131	1	113	1
+L	133	1	114	1
+L	132	1	115	1
+L	219	1	229	1
+L	204	1	229	2
+L	200	1	229	3
+L	202	1	229	4
+L	229	1	228	1
+L	228	1	219	1
+L	220	1	231	1
+L	205	1	231	2
+L	201	1	231	3
+L	203	1	231	4
+L	231	1	230	1
+L	230	1	220	1
+L	207	1	233	1
+L	206	1	233	2
+L	228	1	233	3
+L	208	1	233	4
+L	200	1	233	5
+L	233	1	232	1
+L	207	1	235	1
+L	206	1	235	2
+L	230	1	235	3
+L	208	1	235	4
+L	201	1	235	5
+L	235	1	234	1
+L	221	1	237	1
+L	222	1	237	2
+L	226	1	237	3
+L	206	1	237	4
+L	209	1	237	5
+L	200	1	237	6
+L	237	1	236	1
+L	236	1	221	1
+L	221	1	239	1
+L	222	1	239	2
+L	226	1	239	3
+L	206	1	239	4
+L	209	1	239	5
+L	201	1	239	6
+L	239	1	238	1
+L	238	1	222	1
+L	223	1	241	1
+L	236	1	241	2
+L	241	1	240	1
+L	240	1	223	1
+L	224	1	243	1
+L	238	1	243	2
+L	243	1	242	1
+L	242	1	224	1
+L	232	1	245	1
+L	234	1	245	2
+L	236	1	245	3
+L	238	1	245	4
+L	240	1	245	5
+L	242	1	245	6
+L	245	1	244	1
+L	210	1	246	1
+L	212	1	248	1
+L	210	1	248	2
+L	211	1	248	3
+L	248	1	247	1
+L	246	1	250	1
+L	247	1	250	2
+L	225	1	250	3
+L	244	1	250	4
+L	250	1	249	1
+L	249	1	225	1
+L	246	1	252	1
+L	247	1	252	2
+L	244	1	252	3
+L	249	1	252	4
+L	252	1	251	1
+L	251	1	226	1
+L	246	1	254	1
+L	213	1	254	2
+L	214	1	254	3
+L	227	1	254	4
+L	254	1	253	1
+L	253	1	227	1
+L	253	1	256	1
+L	215	1	256	2
+L	216	1	256	3
+L	256	1	255	1
+L	251	1	217	1
+L	255	1	218	1
+L	258	1	269	1
+L	259	1	269	2
+L	269	1	268	1
+L	261	1	271	1
+L	268	1	271	2
+L	265	1	271	3
+L	271	1	270	1
+L	270	1	265	1
+L	268	1	273	1
+L	267	1	273	2
+L	273	1	272	1
+L	272	1	275	1
+L	260	1	275	2
+L	275	1	274	1
+L	261	1	277	1
+L	270	1	277	2
+L	274	1	277	3
+L	277	1	276	1
+L	276	1	266	1
+L	261	1	279	1
+L	267	1	279	2
+L	272	1	279	3
+L	260	1	279	4
+L	268	1	279	5
+L	279	1	278	1
+L	278	1	267	1
+L	276	1	262	1
+L	268	1	263	1
+L	266	1	264	1
+L	281	1	296	1
+L	282	1	296	2
+L	292	1	296	3
+L	291	1	296	4
+L	296	1	295	1
+L	295	1	291	1
+L	292	1	298	1
+L	282	1	298	2
+L	298	1	297	1
+L	297	1	292	1
+L	283	1	299	1
+L	297	1	300	1
+L	305	1	308	1
+L	306	1	308	2
+L	308	1	310	1
+L	309	1	310	2
+L	310	1	311	1
+L	311	1	312	1
+L	312	1	314	1
+L	313	1	314	2
+L	314	1	315	1
+L	315	1	316	1
+L	316	1	318	1
+L	317	1	318	2
+L	318	1	319	1
+L	319	1	321	1
+L	320	1	321	2
+L	321	1	307	1
+L	299	1	301	1
+L	300	1	301	2
+L	299	1	302	1
+L	300	1	302	2
+L	299	1	304	1
+L	300	1	304	2
+L	285	1	303	1
+L	301	1	303	2
+L	302	1	303	3
+L	295	1	323	1
+L	284	1	323	2
+L	303	1	323	3
+L	304	1	323	4
+L	323	1	322	1
+L	322	1	325	1
+L	293	1	325	2
+L	325	1	324	1
+L	293	1	327	1
+L	324	1	327	2
+L	327	1	326	1
+L	326	1	293	1
+L	324	1	328	1
+L	328	1	294	1
+L	326	1	286	1
+L	328	1	287	1
+L	293	1	288	1
+L	291	1	289	1
+L	294	1	290	1
+L	349	1	359	1
+L	350	1	359	2
+L	339	1	359	3
+L	343	1	359	4
+L	330	1	359	5
+L	338	1	359	6
+L	359	1	358	1
+L	358	1	349	1
+L	349	1	361	1
+L	350	1	361	2
+L	339	1	361	3
+L	343	1	361	4
+L	331	1	361	5
+L	338	1	361	6
+L	361	1	360	1
+L	360	1	350	1
+L	339	1	363	1
+L	341	1	363	2
+L	358	1	363	3
+L	342	1	363	4
+L	330	1	363	5
+L	363	1	362	1
+L	339	1	365	1
+L	341	1	365	2
+L	360	1	365	3
+L	342	1	365	4
+L	331	1	365	5
+L	365	1	364	1
+L	351	1	367	1
+L	334	1	367	2
+L	330	1	367	3
+L	332	1	367	4
+L	362	1	367	5
+L	367	1	366	1
+L	366	1	351	1
+L	352	1	369	1
+L	335	1	369	2
+L	331	1	369	3
+L	333	1	369	4
+L	364	1	369	5
+L	369	1	368	1
+L	368	1	352	1
+L	366	1	371	1
+L	368	1	371	2
+L	330	1	371	3
+L	331	1	371	4
+L	371	1	370	1
+L	337	1	373	1
+L	339	1	373	2
+L	341	1	373	3
+L	336	1	373	4
+L	373	1	372	1
+L	340	1	375	1
+L	339	1	375	2
+L	336	1	375	3
+L	342	1	375	4
+L	372	1	375	5
+L	375	1	374	1
+L	366	1	377	1
+L	368	1	377	2
+L	377	1	376	1
+L	376	1	379	1
+L	374	1	379	2
+L	353	1	379	3
+L	379	1	378	1
+L	378	1	353	1
+L	337	1	381	1
+L	370	1	381	2
+L	381	1	380	1
+L	380	1	383	1
+L	354	1	383	2
+L	383	1	382	1
+L	382	1	354	1
+L	366	1	385	1
+L	368	1	385	2
+L	385	1	384	1
+L	384	1	387	1
+L	382	1	387	2
+L	378	1	387	3
+L	387	1	386	1
+L	386	1	388	1
+L	382	1	390	1
+L	376	1	390	2
+L	374	1	390	3
+L	390	1	389	1
+L	382	1	392	1
+L	388	1	392	2
+L	384	1	392	3
+L	389	1	392	4
+L	355	1	392	5
+L	356	1	392	6
+L	357	1	392	7
+L	392	1	391	1
+L	391	1	355	1
+L	382	1	394	1
+L	388	1	394	2
+L	384	1	394	3
+L	389	1	394	4
+L	355	1	394	5
+L	356	1	394	6
+L	357	1	394	7
+L	394	1	393	1
+L	393	1	356	1
+L	382	1	396	1
+L	388	1	396	2
+L	384	1	396	3
+L	389	1	396	4
+L	355	1	396	5
+L	356	1	396	6
+L	357	1	396	7
+L	396	1	395	1
+L	395	1	357	1
+L	391	1	344	1
+L	393	1	345	1
+L	395	1	346	1
+L	376	1	347	1
+L	370	1	348	1
+L	398	1	418	1
+L	399	1	418	2
+L	400	1	418	3
+L	418	1	417	1
+L	417	1	411	1
+L	399	1	420	1
+L	400	1	420	2
+L	420	1	419	1
+L	419	1	412	1
+L	413	1	422	1
+L	414	1	422	2
+L	415	1	422	3
+L	416	1	422	4
+L	403	1	422	5
+L	404	1	422	6
+L	405	1	422	7
+L	406	1	422	8
+L	422	1	421	1
+L	413	1	424	1
+L	414	1	424	2
+L	415	1	424	3
+L	416	1	424	4
+L	403	1	424	5
+L	404	1	424	6
+L	405	1	424	7
+L	406	1	424	8
+L	424	1	423	1
+L	413	1	426	1
+L	414	1	426	2
+L	415	1	426	3
+L	416	1	426	4
+L	403	1	426	5
+L	404	1	426	6
+L	405	1	426	7
+L	406	1	426	8
+L	426	1	425	1
+L	413	1	428	1
+L	414	1	428	2
+L	415	1	428	3
+L	416	1	428	4
+L	403	1	428	5
+L	404	1	428	6
+L	405	1	428	7
+L	406	1	428	8
+L	428	1	427	1
+L	401	1	430	1
+L	421	1	430	2
+L	423	1	430	3
+L	430	1	429	1
+L	413	1	432	1
+L	417	1	432	2
+L	421	1	432	3
+L	429	1	432	4
+L	432	1	431	1
+L	431	1	413	1
+L	414	1	434	1
+L	419	1	434	2
+L	423	1	434	3
+L	429	1	434	4
+L	434	1	433	1
+L	433	1	414	1
+L	415	1	436	1
+L	416	1	436	2
+L	425	1	436	3
+L	402	1	436	4
+L	436	1	435	1
+L	435	1	415	1
+L	415	1	438	1
+L	416	1	438	2
+L	427	1	438	3
+L	402	1	438	4
+L	438	1	437	1
+L	437	1	416	1
+L	411	1	407	1
+L	412	1	408	1
+L	413	1	409	1
+L	415	1	410	1
+L	280	3	55	1
+L	50	1	71	1
+L	51	1	71	2
+L	52	1	71	3
+L	97	8	71	4
+L	97	9	71	5
+L	397	3	71	6
+L	397	4	71	7
+L	55	1	71	8
+L	55	3	71	9
+L	55	6	71	10
+L	71	1	199	1
+L	71	2	199	2
+L	71	4	199	3
+L	71	5	199	4
+L	397	1	199	5
+L	397	2	199	6
+L	55	1	199	7
+L	55	3	199	8
+L	55	4	199	9
+L	55	5	199	10
+L	54	1	199	11
+L	53	1	199	12
+L	97	7	199	13
+L	280	4	199	14
+L	280	5	199	15
+L	257	3	199	16
+L	97	10	199	17
+L	53	1	97	1
+L	50	1	97	2
+L	51	1	97	3
+L	52	1	97	4
+L	54	1	97	5
+L	199	1	97	6
+L	199	2	97	7
+L	71	3	97	8
+L	54	1	257	1
+L	97	6	257	2
+L	97	5	257	3
+L	36	1	257	4
+L	257	2	280	1
+L	257	1	280	2
+L	97	6	280	3
+L	34	1	280	4
+L	35	1	280	5
+L	71	1	329	1
+L	71	2	329	2
+L	71	4	329	3
+L	71	5	329	4
+L	397	1	329	5
+L	397	2	329	6
+L	280	1	329	7
+L	257	1	329	8
+L	97	6	329	9
+L	55	1	329	10
+L	55	2	329	11
+L	55	3	329	12
+L	55	4	329	13
+L	55	5	329	14
+L	329	5	46	1
+L	280	2	439	1
+L	329	1	397	1
+L	329	2	397	2
+L	329	3	397	3
+L	51	1	397	4
+L	97	6	397	5
+L	55	1	397	6
+L	55	2	397	7
+L	55	3	397	8
+L	55	6	397	9
+L	329	1	37	1
+L	329	2	38	1
+L	329	3	39	1
+L	97	4	40	1
+L	97	6	41	1
+L	199	1	42	1
+L	257	1	43	1
+L	280	1	44	1
+L	329	4	45	1
+L	97	1	47	1
+L	97	2	48	1
+L	97	3	49	1
+L	480	1	481	1
+L	481	1	482	1
+L	482	1	483	1
+L	471	1	483	2
+L	483	1	484	1
+L	483	1	485	1
+L	483	1	486	1
+L	486	1	487	1
+L	485	1	488	1
+L	486	1	488	2
+L	487	1	488	3
+L	488	1	489	1
+L	484	1	490	1
+L	490	1	491	1
+L	491	1	474	1
+L	489	1	477	1
+L	482	1	492	1
+L	472	1	492	2
+L	492	1	493	1
+L	492	1	494	1
+L	492	1	495	1
+L	495	1	496	1
+L	494	1	497	1
+L	495	1	497	2
+L	496	1	497	3
+L	497	1	498	1
+L	493	1	499	1
+L	499	1	500	1
+L	500	1	475	1
+L	498	1	478	1
+L	482	1	501	1
+L	473	1	501	2
+L	501	1	502	1
+L	501	1	503	1
+L	501	1	504	1
+L	504	1	505	1
+L	503	1	506	1
+L	504	1	506	2
+L	505	1	506	3
+L	506	1	507	1
+L	502	1	508	1
+L	508	1	509	1
+L	509	1	476	1
+L	507	1	479	1
+L	516	1	531	1
+L	532	1	535	1
+L	533	1	535	2
+L	535	1	534	1
+L	531	1	537	1
+L	526	1	537	2
+L	528	1	537	3
+L	534	1	537	4
+L	537	1	536	1
+L	527	1	539	1
+L	529	1	539	2
+L	534	1	539	3
+L	539	1	538	1
+L	536	1	541	1
+L	538	1	541	2
+L	541	1	540	1
+L	531	1	543	1
+L	526	1	543	2
+L	528	1	543	3
+L	540	1	543	4
+L	543	1	542	1
+L	527	1	545	1
+L	529	1	545	2
+L	540	1	545	3
+L	545	1	544	1
+L	542	1	547	1
+L	544	1	547	2
+L	547	1	546	1
+L	531	1	549	1
+L	526	1	549	2
+L	528	1	549	3
+L	546	1	549	4
+L	549	1	548	1
+L	527	1	551	1
+L	529	1	551	2
+L	546	1	551	3
+L	551	1	550	1
+L	548	1	553	1
+L	550	1	553	2
+L	553	1	552	1
+L	531	1	555	1
+L	526	1	555	2
+L	528	1	555	3
+L	552	1	555	4
+L	555	1	554	1
+L	527	1	557	1
+L	529	1	557	2
+L	552	1	557	3
+L	557	1	556	1
+L	554	1	532	1
+L	556	1	533	1
+L	528	1	559	1
+L	534	1	559	2
+L	559	1	558	1
+L	531	1	561	1
+L	526	1	561	2
+L	554	1	561	3
+L	561	1	560	1
+L	527	1	563	1
+L	556	1	563	2
+L	563	1	562	1
+L	528	1	565	1
+L	554	1	565	2
+L	565	1	564	1
+L	529	1	567	1
+L	556	1	567	2
+L	567	1	566	1
+L	554	1	569	1
+L	556	1	569	2
+L	560	1	569	3
+L	562	1	569	4
+L	569	1	568	1
+L	516	1	571	1
+L	511	1	571	2
+L	512	1	571	3
+L	513	1	571	4
+L	571	1	570	1
+L	512	1	573	1
+L	513	1	573	2
+L	573	1	572	1
+L	516	1	575	1
+L	570	1	575	2
+L	560	1	575	3
+L	575	1	574	1
+L	572	1	577	1
+L	562	1	577	2
+L	577	1	576	1
+L	564	1	579	1
+L	530	1	579	2
+L	529	1	579	3
+L	579	1	578	1
+L	566	1	581	1
+L	530	1	581	2
+L	528	1	581	3
+L	581	1	580	1
+L	568	1	583	1
+L	514	1	583	2
+L	530	1	583	3
+L	515	1	583	4
+L	583	1	582	1
+L	516	1	584	1
+L	574	1	526	1
+L	584	1	526	2
+L	558	1	526	3
+L	576	1	527	1
+L	578	1	528	1
+L	580	1	529	1
+L	582	1	530	1
+L	516	1	586	1
+L	560	1	586	2
+L	586	1	585	1
+L	516	1	588	1
+L	560	1	588	2
+L	562	1	588	3
+L	588	1	587	1
+L	516	1	590	1
+L	560	1	590	2
+L	562	1	590	3
+L	590	1	589	1
+L	528	1	592	1
+L	529	1	592	2
+L	592	1	591	1
+L	554	1	594	1
+L	556	1	594	2
+L	594	1	593	1
+L	585	1	517	1
+L	587	1	518	1
+L	589	1	519	1
+L	530	1	520	1
+L	568	1	521	1
+L	591	1	522	1
+L	554	1	523	1
+L	556	1	524	1
+L	593	1	525	1
+L	596	1	609	1
+L	597	1	609	2
+L	598	1	609	3
+L	599	1	609	4
+L	600	1	609	5
+L	601	1	609	6
+L	602	1	609	7
+L	603	1	609	8
+L	604	1	609	9
+L	609	1	610	1
+L	609	1	611	1
+L	609	1	612	1
+L	609	1	613	1
+L	610	1	605	1
+L	611	1	606	1
+L	612	1	607	1
+L	613	1	608	1
+L	615	1	618	1
+L	616	1	619	1
+L	618	1	622	1
+L	619	1	622	2
+L	622	1	621	1
+L	621	1	620	1
+L	621	1	624	1
+L	620	1	624	2
+L	624	1	623	1
+L	623	1	625	1
+L	625	1	627	1
+L	618	1	627	2
+L	619	1	627	3
+L	627	1	626	1
+L	626	1	617	1
+L	444	1	628	1
+L	449	1	629	1
+L	629	1	630	1
+L	628	1	630	2
+L	630	1	631	1
+L	441	1	470	1
+L	442	1	470	2
+L	443	1	470	3
+L	470	1	510	1
+L	470	2	510	2
+L	470	3	510	3
+L	445	1	510	4
+L	446	1	510	5
+L	631	1	510	6
+L	470	1	595	1
+L	510	1	595	4
+L	470	4	595	7
+L	470	2	595	2
+L	510	2	595	5
+L	470	5	595	8
+L	470	3	595	3
+L	510	3	595	6
+L	470	6	595	9
+L	510	7	614	1
+L	510	8	614	2
+L	445	1	632	1
+L	510	4	632	2
+L	632	1	633	1
+L	510	4	634	1
+L	595	1	635	1
+L	595	2	635	2
+L	595	3	635	3
+L	614	1	635	4
+L	447	1	636	1
+L	448	1	637	1
+L	510	4	638	1
+L	636	1	638	2
+L	638	1	639	1
+L	510	1	640	1
+L	637	1	640	2
+L	640	1	641	1
+L	510	1	450	1
+L	510	2	451	1
+L	510	3	452	1
+L	510	4	453	1
+L	510	5	454	1
+L	510	6	455	1
+L	635	1	456	1
+L	595	1	457	1
+L	595	2	458	1
+L	595	3	459	1
+L	614	1	460	1
+L	633	1	461	1
+L	634	1	462	1
+L	595	4	463	1
+L	510	9	464	1
+L	631	1	465	1
+L	641	1	466	1
+L	510	2	467	1
+L	510	3	468	1
+L	639	1	469	1
+L	440	17	28	1
+L	440	18	28	2
+L	440	19	28	3
+L	440	20	28	4
+L	27	1	28	5
+L	3	1	28	6
+L	4	1	28	7
+L	5	1	28	8
+L	28	1	440	1
+L	28	2	440	2
+L	28	3	440	3
+L	28	4	440	4
+L	27	2	440	5
+L	27	6	440	6
+L	27	3	440	7
+L	27	4	440	8
+L	27	5	440	9
+L	28	5	642	1
+L	27	1	643	1
+L	440	4	644	1
+L	643	1	645	1
+L	644	1	645	2
+L	645	1	646	1
+L	28	7	647	1
+L	440	5	647	2
+L	27	2	647	3
+L	28	10	647	4
+L	647	1	648	1
+L	28	8	649	1
+L	28	9	649	2
+L	440	6	649	3
+L	649	1	650	1
+L	440	1	651	1
+L	440	2	651	2
+L	440	3	651	3
+L	651	1	652	1
+L	28	6	653	1
+L	644	1	654	1
+L	653	1	654	2
+L	654	1	655	1
+L	28	11	656	1
+L	28	12	656	2
+L	28	13	656	3
+L	28	4	656	4
+L	656	1	657	1
+L	440	7	658	1
+L	440	7	659	1
+L	659	1	660	1
+L	660	1	661	1
+L	663	1	679	1
+L	679	1	671	1
+L	664	1	680	1
+L	680	1	672	1
+L	665	1	681	1
+L	681	1	673	1
+L	666	1	682	1
+L	682	1	674	1
+L	667	1	683	1
+L	683	1	675	1
+L	668	1	684	1
+L	684	1	676	1
+L	669	1	685	1
+L	685	1	677	1
+L	670	1	686	1
+L	686	1	678	1
+L	440	8	662	1
+L	440	9	662	2
+L	440	10	662	3
+L	440	11	662	4
+L	440	12	662	5
+L	440	13	662	6
+L	440	5	662	7
+L	440	1	662	8
+L	27	1	687	1
+L	440	4	687	2
+L	440	5	687	3
+L	440	1	687	4
+L	440	2	687	5
+L	440	3	687	6
+L	440	8	687	7
+L	440	9	687	8
+L	440	10	687	9
+L	440	11	687	10
+L	440	12	687	11
+L	440	13	687	12
+L	440	14	687	13
+L	28	11	687	14
+L	28	12	687	15
+L	28	13	687	16
+L	28	4	687	17
+L	28	6	687	18
+L	28	7	687	19
+L	28	8	687	20
+L	28	9	687	21
+L	440	6	687	22
+L	440	15	687	23
+L	440	16	687	24
+L	662	1	687	25
+L	662	2	687	26
+L	662	3	687	27
+L	662	4	687	28
+L	662	5	687	29
+L	662	6	687	30
+L	662	7	687	31
+L	662	8	687	32
+L	28	1	687	33
+L	28	2	687	34
+L	28	3	687	35
+L	687	1	688	1
