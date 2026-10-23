@@ -1,0 +1,5 @@
+model,input,accuracy,macro_F1,params,infer_ms_per_window,train_F1,fit,F1 noise 0 %,F1 noise 1 %,F1 noise 5 %
+Mamba2,raw,1.0,1.0,16708,0.5478,1.0,good fit,1.0,1.0,1.0
+1-D CNN,raw,1.0,1.0,24612,0.0534,1.0,good fit,1.0,1.0,1.0
+XGBoost,features,0.9977,0.9971,2712,0.0308,1.0,good fit,0.9971,0.7143,0.6552
+KAN,features,0.9977,0.9959,8228,0.0234,1.0,good fit,0.9959,0.5323,0.1173

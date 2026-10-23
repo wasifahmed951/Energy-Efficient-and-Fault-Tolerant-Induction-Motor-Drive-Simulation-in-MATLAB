@@ -1,0 +1,14 @@
+# Python packages for the thesis ML notebooks
+# install:  pip install -r requirements.txt
+numpy
+pandas
+scipy
+scikit-learn
+xgboost
+torch
+matplotlib
+h5py
+jupyter
+# Optional, only with an NVIDIA GPU (e.g. Google Colab) - the official Mamba2 kernel:
+# mamba-ssm
+# causal-conv1d

@@ -1,0 +1,5 @@
+model,input,accuracy,macro_F1,params,infer_ms_per_window,train_s,hparams
+Mamba2,raw,1.0,1.0,16708,0.5477620689660022,287.0753982067108,"d_model=32, 2 layers, d_state=16, PyTorch reference scan"
+1-D CNN,raw,1.0,1.0,24612,0.05339885056259688,13.272815227508545,3 conv layers
+XGBoost,features,0.9977011494252873,0.9971372356123954,2712,0.030760919533391624,15.627242088317871,"{""learning_rate"": 0.05, ""max_depth"": 3, ""n_estimators"": 200}"
+KAN,features,0.9977011494252873,0.9959394134708346,8228,0.02336574712669177,18.229417324066162,"hidden=16,G=5"
